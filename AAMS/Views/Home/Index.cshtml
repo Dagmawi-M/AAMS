@@ -12,7 +12,7 @@
                 {
                     <p>Name: @Session["FullName"].ToString()</p>
                     <p>Email: @Session["Email"].ToString()</p>
-                    <p>Role: @Session["Roles"].ToString()</p>
+                    @*<p>Role: @Session["Roles"].ToString()</p>*@
                     <a href="@Url.Action("Logout","Home")" class="btn btn-warning">Logout</a>
                 }
             </div>

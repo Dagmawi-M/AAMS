@@ -11,6 +11,11 @@ namespace AAMS.Models
     {
         public DBentities() : base("DatabaseMVC5") { }
         public DbSet<User> Users { get; set; }
+
+        public DbSet<StudentData> StudentDatas { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<AttendanceSheet> AttendanceSheets {get; set;}
+        public DbSet<AttendanceData> AttendanceDatas { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //Database.SetInitializer<demoEntities>(null);
