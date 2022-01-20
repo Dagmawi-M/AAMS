@@ -250,6 +250,9 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Registrar\Index.cshtml" />
     <Content Include="Views\Registrar\AddStudents.cshtml" />
+    <Content Include="Views\Registrar\EditStudents.cshtml" />
+    <Content Include="Views\Registrar\ViewStudents.cshtml" />
+    <Content Include="Views\Registrar\ViewStudent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202201201648469_InitialCreate.resx">
