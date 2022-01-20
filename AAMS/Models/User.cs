@@ -32,5 +32,6 @@ namespace AAMS.Models
         {
             return this.FirstName + " " + this.LastName;
         }
+        public string Roles { get; set; }
     }
 }

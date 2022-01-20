@@ -38,6 +38,7 @@ namespace AAMS.Controllers
             if (ModelState.IsValid)
             {
                 var check = _db.Users.FirstOrDefault(s => s.Email == _user.Email);
+
                 if (check == null)
                 {
                     _user.Password = GetMD5(_user.Password);
@@ -118,5 +119,7 @@ namespace AAMS.Controllers
 
             return View();
         }
+
+   
     }
 }

@@ -131,11 +131,24 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202201201648469_InitialCreate.cs" />
+    <Compile Include="Migrations\202201201648469_InitialCreate.designer.cs">
+      <DependentUpon>202201201648469_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201201711579_First.cs" />
+    <Compile Include="Migrations\202201201711579_First.designer.cs">
+      <DependentUpon>202201201711579_First.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DBentities.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\DatabaseMVC5.mdf" />
+    <Content Include="App_Data\DatabaseMVC5_log.ldf">
+      <DependentUpon>DatabaseMVC5.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -212,7 +225,12 @@
     <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <EmbeddedResource Include="Migrations\202201201648469_InitialCreate.resx">
+      <DependentUpon>202201201648469_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201201711579_First.resx">
+      <DependentUpon>202201201711579_First.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
