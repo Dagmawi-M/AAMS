@@ -20,7 +20,7 @@ namespace AAMS.Controllers
             var Students = _context.StudentDatas.ToList();
             return View(Students);
         }
-        public ActionResult ViewStudent(int id)
+        public ActionResult DetailsStudent(int id)
         {
             var Student = _context.StudentDatas.Where(t => t.StdId == id).FirstOrDefault();
             return View(Student);
