@@ -254,6 +254,11 @@
     <Content Include="Views\Registrar\EditStudents.cshtml" />
     <Content Include="Views\Registrar\ViewStudents.cshtml" />
     <Content Include="Views\Registrar\DetailsStudent.cshtml" />
+    <Content Include="Views\Shared\_RegistrarLayout.cshtml" />
+    <Content Include="Views\Home\RegistratLayoutTest.cshtml" />
+    <Content Include="Views\Shared\_StudentLayout.cshtml" />
+    <Content Include="Views\Shared\_LecturerLayout.cshtml" />
+    <Content Include="Views\Shared\_AuthenticationLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202201201648469_InitialCreate.resx">

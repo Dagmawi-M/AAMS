@@ -120,6 +120,11 @@ namespace AAMS.Controllers
             return View();
         }
 
-   
+        public ActionResult RegistratLayoutTest()
+        {
+            ViewBag.Message = "RegistratLayoutTest.";
+
+            return View();
+        }
     }
 }
