@@ -13,7 +13,7 @@ namespace AAMS.Models
         public int AttendanceDataId { get; set; }
 
         [Required(ErrorMessage = "Please Enter Attendance Sheet ID")]
-        public string AttendanceSheetId { get; set; }
+        public int AttendanceSheetId { get; set; }
 
         [Required]
         public DateTime Date { get; set; }

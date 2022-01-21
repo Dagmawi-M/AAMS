@@ -13,7 +13,7 @@ namespace AAMS.Models
         public int CourseId { get; set; }
 
         [Required(ErrorMessage = "Please Enter Course Code")]
-        [RegularExpression("^[CC|CS]//d{3}$", ErrorMessage = "Invalid Course Code Format")]
+        //[RegularExpression("^[CS]{2}//d{3}$", ErrorMessage = "Invalid Course Code Format")]
         public string CourseCode { get; set; }
 
         [Required(ErrorMessage = "Please enter Course Name")]
@@ -24,7 +24,7 @@ namespace AAMS.Models
         public string Semester { get; set; }
 
         [Required(ErrorMessage = "Please Enter Year")]
-        [RegularExpression("//d{4}", ErrorMessage = "Please Enter Appropriate Format")]
-        public DateTime Year { get; set; }
+       // [RegularExpression("^[0-9]{4}$", ErrorMessage = "Please Enter Appropriate Format")]
+        public string Year { get; set; }
     }
 }

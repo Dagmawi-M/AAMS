@@ -1,0 +1,70 @@
+﻿@model IEnumerable<AAMS.Models.AttendanceSheet>
+
+@{
+    ViewBag.Title = "ListAttendanceSheet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListAttendanceSheet</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Students.StudentCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Students.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Students.FatherName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Students.Batch)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.CourseId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Section)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssignedLecturerId)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Students.StudentCode)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Students.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Students.FatherName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Students.Batch)
+    </td>
+    @*<td>
+            @Html.DisplayFor(modelItem => item.CourseId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Section)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssignedLecturerId)
+        </td>*@
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.AttendanceSheetId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.AttendanceSheetId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.AttendanceSheetId })
+    </td>
+</tr>
+}
+
+</table>

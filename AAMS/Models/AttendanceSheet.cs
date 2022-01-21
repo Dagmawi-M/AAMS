@@ -13,10 +13,10 @@ namespace AAMS.Models
         public int AttendanceSheetId { get; set; }
 
         [Required(ErrorMessage = "Please Enter Student ID")]
-        public string StudentId { get; set; }
+        public int StdId { get; set; }
 
         [Required(ErrorMessage = "Please Enter Course ID")]
-        public string CourseId { get; set; }
+        public int CourseId { get; set; }
 
         [Required(ErrorMessage = "Please Enter Section")]
         [RegularExpression("^[A-Za-z]$")]

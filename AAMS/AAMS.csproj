@@ -160,6 +160,26 @@
     <Compile Include="Migrations\202201201835023_edited-models2.designer.cs">
       <DependentUpon>202201201835023_edited-models2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202201211104435_edited-models3.cs" />
+    <Compile Include="Migrations\202201211104435_edited-models3.designer.cs">
+      <DependentUpon>202201211104435_edited-models3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201211108288_edited-models4.cs" />
+    <Compile Include="Migrations\202201211108288_edited-models4.designer.cs">
+      <DependentUpon>202201211108288_edited-models4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201211113161_edited-models5.cs" />
+    <Compile Include="Migrations\202201211113161_edited-models5.designer.cs">
+      <DependentUpon>202201211113161_edited-models5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201211114472_edited-models6.cs" />
+    <Compile Include="Migrations\202201211114472_edited-models6.designer.cs">
+      <DependentUpon>202201211114472_edited-models6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201211204564_edited-models7.cs" />
+    <Compile Include="Migrations\202201211204564_edited-models7.designer.cs">
+      <DependentUpon>202201211204564_edited-models7.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AttendanceData.cs" />
     <Compile Include="Models\AttendanceSheet.cs" />
@@ -254,6 +274,13 @@
     <Content Include="Views\Registrar\EditStudents.cshtml" />
     <Content Include="Views\Registrar\ViewStudents.cshtml" />
     <Content Include="Views\Registrar\DetailsStudent.cshtml" />
+    <Content Include="Views\Registrar\ViewCourses.cshtml" />
+    <Content Include="Views\Registrar\DetailsCourse.cshtml" />
+    <Content Include="Views\Registrar\EditCourse.cshtml" />
+    <Content Include="Views\Registrar\AddCourse.cshtml" />
+    <Content Include="Views\Registrar\ListAttendanceSheet.cshtml" />
+    <Content Include="Views\Registrar\AddAttendanceSheet.cshtml" />
+    <Content Include="Views\Registrar\ViewAttendanceSheets.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202201201648469_InitialCreate.resx">
@@ -276,6 +303,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201201835023_edited-models2.resx">
       <DependentUpon>202201201835023_edited-models2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201211104435_edited-models3.resx">
+      <DependentUpon>202201211104435_edited-models3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201211108288_edited-models4.resx">
+      <DependentUpon>202201211108288_edited-models4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201211113161_edited-models5.resx">
+      <DependentUpon>202201211113161_edited-models5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201211114472_edited-models6.resx">
+      <DependentUpon>202201211114472_edited-models6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201211204564_edited-models7.resx">
+      <DependentUpon>202201211204564_edited-models7.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
