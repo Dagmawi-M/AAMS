@@ -19,7 +19,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44334</IISExpressSSLPort>
+    <IISExpressSSLPort>44395</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -140,6 +140,10 @@
     <Compile Include="Migrations\202201251115343_first-migration.designer.cs">
       <DependentUpon>202201251115343_first-migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202201251749018_second-migration.cs" />
+    <Compile Include="Migrations\202201251749018_second-migration.designer.cs">
+      <DependentUpon>202201251749018_second-migration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\AttendanceData.cs" />
@@ -199,10 +203,13 @@
     <Content Include="Views\Shared\_LecturerLayout.cshtml" />
     <Content Include="Views\Shared\_AuthenticationLayout.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\AttendanceSheet\ViewAttendanceSheets.cshtml" />
+    <Content Include="Views\AttendanceSheet\AddAttendanceSheet.cshtml" />
+    <Content Include="Views\AttendanceSheet\ListAttendanceSheet.cshtml" />
+    <Content Include="Views\AttendanceSheet\AddStudentToAttendanceSheet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppData\" />
-    <Folder Include="Views\AttendanceSheet\" />
     <Folder Include="Views\Registrar\" />
   </ItemGroup>
   <ItemGroup>
@@ -221,6 +228,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202201251115343_first-migration.resx">
       <DependentUpon>202201251115343_first-migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201251749018_second-migration.resx">
+      <DependentUpon>202201251749018_second-migration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
