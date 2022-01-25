@@ -198,6 +198,7 @@
     <Content Include="Views\Shared\StudentLayout.cshtml" />
     <Content Include="Views\Shared\_LecturerLayout.cshtml" />
     <Content Include="Views\Shared\_AuthenticationLayout.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppData\" />
