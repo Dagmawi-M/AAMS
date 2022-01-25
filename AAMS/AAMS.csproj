@@ -19,7 +19,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44395</IISExpressSSLPort>
+    <IISExpressSSLPort>44334</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -194,6 +194,10 @@
     <Content Include="Views\Course\DetailsCourse.cshtml" />
     <Content Include="Views\Course\AddCourse.cshtml" />
     <Content Include="Views\Course\EditCourse.cshtml" />
+    <Content Include="Views\Shared\_RegistrarLayout.cshtml" />
+    <Content Include="Views\Shared\StudentLayout.cshtml" />
+    <Content Include="Views\Shared\_LecturerLayout.cshtml" />
+    <Content Include="Views\Shared\_AuthenticationLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppData\" />
