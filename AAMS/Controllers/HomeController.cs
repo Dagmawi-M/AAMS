@@ -11,7 +11,7 @@ namespace AAMS.Controllers
 {
     public class HomeController : Controller
     {
-        private DBentities _db = new DBentities();
+        private ApplicationDbContext _db = new ApplicationDbContext();
         public ActionResult Index()
         {
             if (Session["idUser"] != null)
@@ -44,6 +44,7 @@ namespace AAMS.Controllers
                     _user.Password = GetMD5(_user.Password);
                     _db.Configuration.ValidateOnSaveEnabled = false;
                     _db.Users.Add(_user);
+            
                     _db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -72,9 +73,9 @@ namespace AAMS.Controllers
                 if (data.Count() > 0)
                 {
                     //add session
-                    Session["FullName"] = data.FirstOrDefault().FirstName + " " + data.FirstOrDefault().LastName;
+                    Session["FullName"] = data.FirstOrDefault().FullName;
                     Session["Email"] = data.FirstOrDefault().Email;
-                    Session["idUser"] = data.FirstOrDefault().idUser;
+                    Session["idUser"] = data.FirstOrDefault().ID;
                     return RedirectToAction("Index");
                 }
                 else

@@ -11,6 +11,8 @@ namespace AAMS.Models
         public ApplicationDbContext() : base("name=ApplicationDbContext")
         {
         }
+
+        public DbSet<User> Users { get; set; }
         public DbSet<StudentData> StudentDatas { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<AttendanceSheet> AttendanceSheets { get; set; }
