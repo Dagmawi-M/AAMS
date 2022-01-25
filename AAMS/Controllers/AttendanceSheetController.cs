@@ -34,8 +34,8 @@ namespace AAMS.Controllers
 
         public ActionResult AddAttendanceSheet()
         {
-            ViewBag.courses = _context.Courses.Select(c=>c.CourseCode).ToList();
-            ViewBag.students = _context.StudentDatas.Select(s=>s.StudentCode).ToList();
+            ViewBag.courses = _context.Courses.ToList();
+            ViewBag.students = _context.StudentDatas.ToList();
             return View();
         }
 
@@ -51,6 +51,7 @@ namespace AAMS.Controllers
         {
             var sheet = _context.AttendanceSheets.Where(a => a.Courses.CourseCode == code).FirstOrDefault();
             ViewBag.CourseId = sheet.CourseId;
+            ViewBag.students = _context.StudentDatas.ToList();
             return View();
 
         }
