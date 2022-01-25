@@ -1,0 +1,58 @@
+﻿@model IEnumerable<AAMS.Models.Course>
+
+@{
+    ViewBag.Title = "ViewCourses";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ViewCourses</h2>
+
+<p>
+    @Html.ActionLink("Add Course", "AddCourse")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Semester)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssignedLecturerId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Semester)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssignedLecturerId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditCourse", new { id=item.CourseId }) |
+            @Html.ActionLink("Details", "DetailsCourse", new { id=item.CourseId }) |
+            @Html.ActionLink("Delete", "DeleteCourse", new { id=item.CourseId })
+        </td>
+    </tr>
+}
+
+</table>
