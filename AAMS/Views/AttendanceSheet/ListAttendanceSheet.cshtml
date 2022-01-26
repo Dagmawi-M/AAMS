@@ -1,0 +1,70 @@
+﻿@model IEnumerable<AAMS.Models.AttendanceSheet>
+
+@{
+    ViewBag.Title = "ListAttendanceSheet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListAttendanceSheet</h2>
+
+<p>
+    @Html.ActionLink("Back", "ViewAttendanceSheets") | 
+    @Html.ActionLink("Add Student", "AddStudentToAttendanceSheet", new { code = ViewBag.courseCode })
+    @*@Html.Label("Course Code: " + ViewBag.courseCode)
+        @Html.Label("Course Name: " + ViewBag.courseName)
+        @Html.Label("Section: " + ViewBag.section)*@
+    <br />
+    <label>Course Code: @ViewBag.courseCode</label><br />
+    <label>Course Name: @ViewBag.courseName</label><br/>
+    <label>Section: @ViewBag.section</label><br />
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Students.StudentCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Students.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Students.FatherName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Students.GrandFatherName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Students.Batch)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Section)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Students.StudentCode)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Students.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Students.FatherName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Students.GrandFatherName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Students.Batch)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Section)
+    </td>
+    <td>
+        @Html.ActionLink("Delete", "DeleteStudentAttendance", new { id = item.AttendanceSheetId })
+    </td>
+</tr>
+}
+
+</table>
