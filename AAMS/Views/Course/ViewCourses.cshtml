@@ -1,4 +1,5 @@
-﻿@model IEnumerable<AAMS.Models.Course>
+﻿@using AAMS.Models
+@model IEnumerable<AAMS.Models.Course>
 
 @{
     ViewBag.Title = "ViewCourses";
@@ -30,7 +31,8 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.CourseCode)
@@ -45,6 +47,11 @@
             @Html.DisplayFor(modelItem => item.Year)
         </td>
         <td>
+            @*@{
+                ApplicationDbContext _context = new ApplicationDbContext();
+                var lecturer = _context.Users.Where(l => l.ID == item.AssignedLecturerId).FirstOrDefault();
+                Html.Display(lecturer.FirstName);
+            }*@
             @Html.DisplayFor(modelItem => item.AssignedLecturerId)
         </td>
         <td>

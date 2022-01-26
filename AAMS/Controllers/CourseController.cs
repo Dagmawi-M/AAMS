@@ -17,6 +17,11 @@ namespace AAMS.Controllers
         }
         public ActionResult ViewCourses()
         {
+            //var lecturers;
+            //foreach (var item in _context.Courses.ToList())
+            //{
+            //    lecturers.Add(_context.Users.Where(a => a.ID == item.AssignedLecturerId));
+            //}
             return View(_context.Courses.ToList());
         }
 
@@ -53,6 +58,7 @@ namespace AAMS.Controllers
             course.CourseName = _course.CourseName;
             course.Semester = _course.Semester;
             course.Year = _course.Year;
+            course.AssignedLecturerId = _course.AssignedLecturerId;
             _context.SaveChanges();
             return RedirectToAction("ViewCourses");
         }

@@ -27,6 +27,7 @@ namespace AAMS.Controllers
         //GET: Register
         public ActionResult Register()
         {
+
             return View();
         }
 
