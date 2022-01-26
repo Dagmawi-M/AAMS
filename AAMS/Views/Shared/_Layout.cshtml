@@ -35,7 +35,8 @@
                 <li class="active nav-item">
                     @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
                 </li>
-                <li>
+                <li @RenderSection("activeNavList",required:false)>
+                    
                     @Html.ActionLink("Students", "Index", "StudentData", null, new { @class = "nav-link" })
                 </li>
 
