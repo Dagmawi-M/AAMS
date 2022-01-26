@@ -6,6 +6,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@*@{ 
+    var unique = new List<int>();
+}*@
+
 <h2>ViewAttendanceSheets</h2>
 
 <p>
@@ -41,33 +45,43 @@
     </tr>
 
 @foreach (var item in Model) {
+
+
+    //if (unique.IndexOf(item.CourseId) < 0)
+    //    {
 <tr>
     @*<td>
-        @Html.DisplayFor(modelItem => item.Students.StudentCode)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Students.FirstName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Students.FatherName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Students.GrandFatherName)
-    </td>*@
+            @Html.DisplayFor(modelItem => item.Students.StudentCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Students.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Students.FatherName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Students.GrandFatherName)
+        </td>*@
     <td>
         @Html.DisplayFor(modelItem => item.Courses.CourseCode)
+        @*@item.Courses.CourseCode*@
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.Courses.CourseName)
+        @*@item.Courses.CourseName*@
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.Section)
+        @*@item.Section*@
     </td>
     <td>
         @Html.ActionLink("View Sheet", "ListAttendanceSheet", new { id = item.AttendanceSheetId }) |
-        @Html.ActionLink("Delete", "DeleteAttendanceSheet", new { id = item.AttendanceSheetId })
+        @Html.ActionLink("Delete Sheet", "DeleteAttendanceSheet", new { id = item.AttendanceSheetId })
     </td>
+    @*@unique.Add(item.Courses.CourseId)*@
 </tr>
+       
+    //}
 }
 
 </table>

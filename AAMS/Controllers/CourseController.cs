@@ -27,6 +27,7 @@ namespace AAMS.Controllers
 
         public ActionResult AddCourse()
         {
+            ViewBag.lecturers = _context.Users.Where(a => a.Role == "Lecturer").ToList();
             return View();
         }
 
@@ -40,6 +41,7 @@ namespace AAMS.Controllers
 
         public ActionResult EditCourse(int id)
         {
+            ViewBag.lecturers = _context.Users.Where(a => a.Role == "Lecturer").ToList();
             return View(_context.Courses.Where(c => c.CourseId == id).FirstOrDefault());
         }
 

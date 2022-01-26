@@ -17,7 +17,9 @@ namespace AAMS.Controllers
         }
         public ActionResult ViewAttendanceSheets()
         {
-            return View(_context.AttendanceSheets.ToList());
+            var uniqueSheets = _context.AttendanceSheets.Select(a => new { a.CourseId, a.Courses, a.Section }).Distinct().ToList();
+            ViewBag.unique = uniqueSheets;
+            return View(_context.AttendanceSheets.ToList()); 
         }
 
         public ActionResult ListAttendanceSheet(int id)
