@@ -11,10 +11,11 @@
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="~/Content/xentos.css">
+ 
 
 
     @Styles.Render("~/Content/css")
+    <link rel="stylesheet" href="~/Content/xentos.css">
     @Scripts.Render("~/bundles/modernizr")
 
     <!-- Font Awesome JS -->
@@ -61,10 +62,11 @@
                         <ul class="nav navbar-nav ml-auto">
 
                             <li class="nav-item">
-                                @RenderSection("logout")
+                                <a href="@Url.Action("Logout","Home")">Logout</a>
                             </li>
+
                             <li class="nav-item">
-                                @RenderSection("ProfileName")
+                                <a>@Session["FirstName"].ToString()</a>
                             </li>
 
                         </ul>

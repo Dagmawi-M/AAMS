@@ -15,6 +15,7 @@ namespace AAMS.Controllers
         public ActionResult Index()
         {
             //  return RedirectToAction("ViewAttendances");
+
             return View();
         }
         public ActionResult ViewAttendances()
