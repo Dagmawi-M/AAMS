@@ -2,34 +2,33 @@
 @{
     ViewBag.Title = "Register";
 }
-<div class="row justify-content-md-center">
-    <div class="col-md-5">
+
         @using (Html.BeginForm("Register", "Home", FormMethod.Post))
         {
             //@Html.ValidationSummary()
             @Html.AntiForgeryToken()
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">Register</div>
+                    <div class="card-title">REGISTER</div>
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        @Html.LabelFor(m => m.FirstName)
+                        @* Html.LabelFor(m => m.FirstName)*@
                         @Html.TextBoxFor(m => m.FirstName, "", new { @class = "form-control", @placeholder = "First Name" })
                         @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "badge badge-danger" })
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(m => m.FatherName)
+                        @*@Html.LabelFor(m => m.FatherName)*@
                         @Html.TextBoxFor(m => m.FatherName, "", new { @class = "form-control", @placeholder = "Last Name" })
                         @Html.ValidationMessageFor(m => m.FatherName, "", new { @class = "badge badge-danger" })
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(m => m.GrandFatherName)
+                        @*@Html.LabelFor(m => m.GrandFatherName)*@
                         @Html.TextBoxFor(m => m.GrandFatherName, "", new { @class = "form-control", @placeholder = "Last Name" })
                         @Html.ValidationMessageFor(m => m.GrandFatherName, "", new { @class = "badge badge-danger" })
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Email)
+                        @*@Html.LabelFor(m => m.Email)*@
                         @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email" })
                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "badge badge-danger" })
                         @if (ViewBag.error != null)
@@ -38,9 +37,9 @@
                         }
                     </div>
 
-                 
+
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Role)
+                        @* @Html.LabelFor(m => m.Role)*@
                         @*@Html.TextBoxFor(m => m.Role, "", new { @class = "form-control", @placeholder = "Role" })*@
                         @Html.DropDownListFor(m => m.Role, new List<SelectListItem>
                    { new SelectListItem{Text = "Lecturer", Value="Lecturer", Selected=true},
@@ -50,22 +49,28 @@
                         @Html.ValidationMessageFor(m => m.Role, "", new { @class = "badge badge-danger" })
                     </div>
 
-                  
+
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Password)
+                        @*@Html.LabelFor(m => m.Password)*@
                         @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "badge badge-danger" })
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(m => m.ConfirmPassword)
+                        @*  @Html.LabelFor(m => m.ConfirmPassword)*@
                         @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confim Password" })
                         @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "badge badge-danger" })
                     </div>
                     <div class="form-group">
                         <input type="submit" name="submit" class="btn btn-danger" value="Register" />
                     </div>
+                    <div class="form-group">
+                        
+                        <a href="@Url.Action("Login", "Home")" class="btn btn-secondary">Login</a>
+                    </div>
+                
                 </div>
             </div>
         }
-    </div>
-</div>
+
+
+
