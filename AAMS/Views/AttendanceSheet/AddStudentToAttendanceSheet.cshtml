@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "AddStudentToAttendanceSheet";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_RegistrarLayout.cshtml";
 }
 
 <h2>AddStudentToAttendanceSheet</h2>
@@ -28,7 +28,7 @@
             @Html.LabelFor(model => model.CourseId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @*@Html.EditorFor(model => model.CourseId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })*@
+                    @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })*@
                 @ViewBag.CourseId
                 @{TempData["CourseId"] = ViewBag.CourseId;}
             </div>

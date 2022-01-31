@@ -33,17 +33,10 @@
 
             <ul class="list-unstyled components">
                 <li class="active nav-item">
-                    @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
+                    @Html.ActionLink("Dashboard", "Index", "Student", null, new { @class = "nav-link" })
                 </li>
                 <li>
-                    @Html.ActionLink("Students", "ViewStudents", "Registrar", null, new { @class = "nav-link" })
-                </li>
-
-                <li>
-                    @Html.ActionLink("Courses", "Contact", "Home", null, new { @class = "nav-link" })
-                </li>
-                <li>
-                    @Html.ActionLink("Attendance", "Contact", "Home", null, new { @class = "nav-link" })
+                    @Html.ActionLink("Attendance Reports", "viewattendance", "Student", null, new { @class = "nav-link" })
                 </li>
             </ul>
 

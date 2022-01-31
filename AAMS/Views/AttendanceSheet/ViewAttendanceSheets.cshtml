@@ -3,35 +3,35 @@
 
 @{
     ViewBag.Title = "ViewAttendanceSheets";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_RegistrarLayout.cshtml";
 }
 
-@*@{ 
-    var unique = new List<int>();
-}*@
+@*@{
+        var unique = new List<int>();
+    }*@
 
 <h2>ViewAttendanceSheets</h2>
 
 <p>
     @Html.ActionLink("Create New", "AddAttendanceSheet")
     @*@Html.Label("Filter By Course")
-    @Html.DropDownList()*@
+        @Html.DropDownList()*@
 
 </p>
 <table class="table">
     <tr>
         @*<th>
-            @Html.DisplayNameFor(model => model.Students.StudentCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Students.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Students.FatherName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Students.GrandFatherName)
-        </th>*@
+                @Html.DisplayNameFor(model => model.Students.StudentCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Students.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Students.FatherName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Students.GrandFatherName)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Courses.CourseCode)
         </th>
@@ -44,44 +44,45 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
 
 
-    //if (unique.IndexOf(item.CourseId) < 0)
-    //    {
-<tr>
-    @*<td>
-            @Html.DisplayFor(modelItem => item.Students.StudentCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Students.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Students.FatherName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Students.GrandFatherName)
-        </td>*@
-    <td>
-        @Html.DisplayFor(modelItem => item.Courses.CourseCode)
-        @*@item.Courses.CourseCode*@
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Courses.CourseName)
-        @*@item.Courses.CourseName*@
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Section)
-        @*@item.Section*@
-    </td>
-    <td>
-        @Html.ActionLink("View Sheet", "ListAttendanceSheet", new { id = item.AttendanceSheetId }) |
-        @Html.ActionLink("Delete Sheet", "DeleteAttendanceSheet", new { id = item.AttendanceSheetId })
-    </td>
-    @*@unique.Add(item.Courses.CourseId)*@
-</tr>
-       
-    //}
-}
+        //if (unique.IndexOf(item.CourseId) < 0)
+        //    {
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Students.StudentCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Students.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Students.FatherName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Students.GrandFatherName)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Courses.CourseCode)
+                @*@item.Courses.CourseCode*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Courses.CourseName)
+                @*@item.Courses.CourseName*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Section)
+                @*@item.Section*@
+            </td>
+            <td>
+                @Html.ActionLink("View Sheet", "ListAttendanceSheet", new { id = item.AttendanceSheetId }) |
+                @Html.ActionLink("Delete Sheet", "DeleteAttendanceSheet", new { id = item.AttendanceSheetId })
+            </td>
+            @*@unique.Add(item.Courses.CourseId)*@
+        </tr>
+
+        //}
+    }
 
 </table>
