@@ -18,7 +18,7 @@ namespace AAMS.Controllers
         }
         public ActionResult ViewAttendances()
         {
-            int id = (int)TempData["UserId"];
+            int id = (int)Session["idUser"];
             var attendances = _context.AttendanceSheets.Where(a => a.Courses.AssignedLecturerId == id).GroupBy(a=> new { a.CourseId, a.Section }).Select(a => a.FirstOrDefault()).ToList();
             return View(attendances);
         }
@@ -33,7 +33,7 @@ namespace AAMS.Controllers
 
         public ActionResult TakeAttendance()
         {
-            int id = (int)TempData["AttendanceId"];
+            int id = (int)Session["idUser"];
             System.Diagnostics.Debug.WriteLine(id);
             var attendance = _context.AttendanceSheets.Where(a => a.AttendanceSheetId == id).FirstOrDefault();
             var studentsList = _context.AttendanceSheets.Where(a => a.CourseId == attendance.CourseId && a.Section == attendance.Section).ToList();
