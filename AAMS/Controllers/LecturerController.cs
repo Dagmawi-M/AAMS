@@ -13,7 +13,8 @@ namespace AAMS.Controllers
         ApplicationDbContext _context = new ApplicationDbContext();
         public ActionResult Index()
         {
-            return RedirectToAction("ViewAttendances");
+            //  return RedirectToAction("ViewAttendances");
+            return View();
         }
         public ActionResult ViewAttendances()
         {

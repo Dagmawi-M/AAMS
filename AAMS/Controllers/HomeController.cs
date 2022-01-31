@@ -72,13 +72,23 @@ namespace AAMS.Controllers
             {
                 var f_password = GetMD5(password);
                 var data = _db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password)).ToList();
+                var Student = _db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password) && s.Role.Equals("Student"));
+                var Lecturer = _db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password) && s.Role.Equals("Lecturer"));
+                var Registrar = _db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password) && s.Role.Equals("Registrar"));
                 if (data.Count() > 0)
                 {
                     //add session
                     Session["FullName"] = data.FirstOrDefault().FullName;
                     Session["Email"] = data.FirstOrDefault().Email;
                     Session["idUser"] = data.FirstOrDefault().ID;
-                    return RedirectToAction("Index");
+
+                    //Security Logic is non-existent here , will fix it later
+                    if (Student.Count() > 0)
+                        return RedirectToAction("Index", "Student");
+                    else if (Lecturer.Count() > 0)
+                        return RedirectToAction("Index", "Lecturer");
+                    else if (Registrar.Count() > 0)
+                        return RedirectToAction("Index", "Registrar");
                 }
                 else
                 {
@@ -88,7 +98,6 @@ namespace AAMS.Controllers
             }
             return View();
         }
-
         //Logout
         public ActionResult Logout()
         {
