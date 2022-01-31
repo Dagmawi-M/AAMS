@@ -232,6 +232,7 @@
     <Content Include="Views\Lecturer\Index.cshtml" />
     <Content Include="Views\Registrar\Index.cshtml" />
     <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppData\" />
