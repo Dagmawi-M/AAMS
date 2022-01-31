@@ -1,13 +1,11 @@
 ﻿@model IEnumerable<AAMS.Models.AttendanceData>
-@using System.Linq;
-@using System.Data.Entity;
 
 @{
-    ViewBag.Title = "TakeAttendance";
-    Layout = "~/Views/Shared/_LecturerLayout.cshtml";
+    ViewBag.Title = "EditAttendance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>TakeAttendance</h2>
+<h2>EditAttendance</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -38,8 +36,7 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
+@foreach (var item in Model) {
 <tr>
     <td>
         @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.StudentCode)
@@ -63,12 +60,10 @@
         @Html.DisplayFor(modelItem => item.Data)
     </td>
     <td>
-        @Html.ActionLink("Present", "Present", new { id = item.AttendanceDataID }) |
-        @Html.ActionLink("Absent", "Absent", new { id = item.AttendanceDataID }) |
-        @Html.ActionLink("Permission", "Permission", new { id = item.AttendanceDataID })
+        @Html.ActionLink("Edit", "Edit", new { id = item.AttendanceDataID }) |
+        @Html.ActionLink("Delete", "DeleteAttendance", new { id = item.AttendanceDataID })
     </td>
 </tr>
-    }
-    @Html.ActionLink("Done", "ViewAttendances");
+}
 
 </table>

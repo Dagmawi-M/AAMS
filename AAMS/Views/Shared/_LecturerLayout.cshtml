@@ -33,7 +33,7 @@
 
             <ul class="list-unstyled components">
                 <li class="active nav-item">
-                    @Html.ActionLink("Home", "Index", "Lecturer", null, new { @class = "nav-link" })
+                    @Html.ActionLink("Home", "Index", "Lecturer", null, new {  @class = "nav-link" })
                 </li>
                 <li>
                     @Html.ActionLink("Take Attendance", "TakeAttendance", "Lecturer", null, new { @class = "nav-link" })
@@ -65,10 +65,10 @@
                             </li>
 
                             <li class="nav-item">
-                                @RenderSection("logout")      
+                                @RenderSection("logout", required:false)      
                             </li>
                             <li class="nav-item">
-                                @RenderSection("ProfileName")
+                                @RenderSection("ProfileName", required:false)
                             </li>
                         </ul>
                     </div>

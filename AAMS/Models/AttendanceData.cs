@@ -15,7 +15,7 @@ namespace AAMS.Models
 		public int AttendanceSheetId { get; set; }
 
 		[Required]
-		public DateTime Date { get; set; }
+		public string Date { get; set; }
 
 		//[Required(ErrorMessage = "Please enter Data for Student")]
 		public string Data { get; set; }
