@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "ViewAttendances";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LecturerLayout.cshtml";
 }
 
 <h2>ViewAttendances</h2>
@@ -10,8 +10,8 @@
 <table class="table">
     <tr>
         @*<th>
-            @Html.DisplayNameFor(model => model.StudentId)
-        </th>*@
+                @Html.DisplayNameFor(model => model.StudentId)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Courses.CourseCode)
         </th>
@@ -24,26 +24,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    @*<td>
-            @Html.DisplayFor(modelItem => item.StudentId)
-        </td>*@
-    <td>
-        @Html.DisplayFor(modelItem => item.Courses.CourseCode)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Courses.CourseName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Section)
-    </td>
-    <td>
-        @Html.ActionLink("View Students", "ViewStudents", new { id = item.AttendanceSheetId }) |
-        @Html.ActionLink("Edit Attendance", "EditAttendance", new { id = item.AttendanceSheetId }) |
-        @Html.ActionLink("Mark Attendance", "MarkAttendance", new { id = item.AttendanceSheetId })
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.StudentId)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Courses.CourseCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Courses.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Section)
+            </td>
+            <td>
+                @Html.ActionLink("View Students", "ViewStudents", new { id = item.AttendanceSheetId }) |
+                @Html.ActionLink("Edit Attendance", "EditAttendance", new { id = item.AttendanceSheetId }) |
+                @Html.ActionLink("Mark Attendance", "MarkAttendance", new { id = item.AttendanceSheetId })
+            </td>
+        </tr>
+    }
 
 </table>

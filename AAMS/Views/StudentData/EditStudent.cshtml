@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "EditStudent";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_RegistrarLayout.cshtml";
 }
 
 <h2>EditStudent</h2>
@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>StudentData</h4>
         <hr />

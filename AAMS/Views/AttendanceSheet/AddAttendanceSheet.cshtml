@@ -2,15 +2,15 @@
 
 @{
     ViewBag.Title = "AddAttendanceSheet";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_RegistrarLayout.cshtml";
 }
 
 <h2>AddAttendanceSheet</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>AttendanceSheet</h4>
         <hr />

@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "ViewStudents";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_RegistrarLayout.cshtml";
 }
 
 <h2>ViewStudents</h2>
@@ -30,29 +30,30 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.StudentCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FatherName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GrandFatherName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Batch)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditStudent", new { id=item.StudentId }) |
-            @Html.ActionLink("Details", "DetailsStudent", new { id=item.StudentId }) |
-            @Html.ActionLink("Delete", "DeleteStudent", new { id=item.StudentId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FatherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GrandFatherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Batch)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditStudent", new { id = item.StudentId }) |
+                @Html.ActionLink("Details", "DetailsStudent", new { id = item.StudentId }) |
+                @Html.ActionLink("Delete", "DeleteStudent", new { id = item.StudentId })
+            </td>
+        </tr>
+    }
 
 </table>

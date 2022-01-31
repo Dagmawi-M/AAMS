@@ -3,7 +3,7 @@
 
 @{
     ViewBag.Title = "ViewCourses";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_RegistrarLayout.cshtml";
 }
 
 <h2>ViewCourses</h2>
@@ -31,35 +31,35 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CourseCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CourseName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Semester)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Year)
-        </td>
-        <td>
-            @*@{
-                ApplicationDbContext _context = new ApplicationDbContext();
-                var lecturer = _context.Users.Where(l => l.ID == item.AssignedLecturerId).FirstOrDefault();
-                Html.Display(lecturer.FirstName);
-            }*@
-            @Html.DisplayFor(modelItem => item.AssignedLecturerId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditCourse", new { id=item.CourseId }) |
-            @Html.ActionLink("Details", "DetailsCourse", new { id=item.CourseId }) |
-            @Html.ActionLink("Delete", "DeleteCourse", new { id=item.CourseId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Semester)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @*@{
+                        ApplicationDbContext _context = new ApplicationDbContext();
+                        var lecturer = _context.Users.Where(l => l.ID == item.AssignedLecturerId).FirstOrDefault();
+                        Html.Display(lecturer.FirstName);
+                    }*@
+                @Html.DisplayFor(modelItem => item.AssignedLecturerId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditCourse", new { id = item.CourseId }) |
+                @Html.ActionLink("Details", "DetailsCourse", new { id = item.CourseId }) |
+                @Html.ActionLink("Delete", "DeleteCourse", new { id = item.CourseId })
+            </td>
+        </tr>
+    }
 
 </table>
