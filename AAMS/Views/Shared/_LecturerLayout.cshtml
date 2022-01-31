@@ -41,15 +41,9 @@
                 <li>
                     @Html.ActionLink("View Attendance", "ViewAttendances", "Lecturer", null, new { @class = "nav-link" })
                 </li>
-
-
-
-
             </ul>
-
-
         </nav>
-
+     
         <!-- Page Content  -->
         <div id="content">
 
@@ -69,8 +63,12 @@
                             <li class="nav-item active">
                                 @Html.ActionLink("Register", "Register", "Home", null, new { @class = "nav-link" })
                             </li>
+
                             <li class="nav-item">
-                                @Html.ActionLink("Login", "Login", "Home", null, new { @class = "nav-link" })
+                                @RenderSection("logout")      
+                            </li>
+                            <li class="nav-item">
+                                @RenderSection("ProfileName")
                             </li>
                         </ul>
                     </div>

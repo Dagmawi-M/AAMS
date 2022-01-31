@@ -78,6 +78,7 @@ namespace AAMS.Controllers
                 if (data.Count() > 0)
                 {
                     //add session
+                    Session["FirstName"] = data.FirstOrDefault().FirstName;
                     Session["FullName"] = data.FirstOrDefault().FullName;
                     Session["Email"] = data.FirstOrDefault().Email;
                     Session["idUser"] = data.FirstOrDefault().ID;
