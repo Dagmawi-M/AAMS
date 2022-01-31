@@ -16,6 +16,7 @@ namespace AAMS.Controllers
         {
             if (Session["idUser"] != null)
             {
+                TempData["UserId"] = Session["idUser"];
                 return View();
             }
             else

@@ -19,7 +19,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44334</IISExpressSSLPort>
+    <IISExpressSSLPort>44395</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -131,6 +131,7 @@
     <Compile Include="Controllers\AttendanceSheetController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LecturerController.cs" />
     <Compile Include="Controllers\RegistrarController.cs" />
     <Compile Include="Controllers\StudentDataController.cs" />
     <Compile Include="Global.asax.cs">
@@ -143,6 +144,18 @@
     <Compile Include="Migrations\202201251749018_second-migration.cs" />
     <Compile Include="Migrations\202201251749018_second-migration.designer.cs">
       <DependentUpon>202201251749018_second-migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201302009575_attendance data edit.cs" />
+    <Compile Include="Migrations\202201302009575_attendance data edit.designer.cs">
+      <DependentUpon>202201302009575_attendance data edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201311012379_attendance data edit 2.cs" />
+    <Compile Include="Migrations\202201311012379_attendance data edit 2.designer.cs">
+      <DependentUpon>202201311012379_attendance data edit 2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201311015565_attendance data edit 3.cs" />
+    <Compile Include="Migrations\202201311015565_attendance data edit 3.designer.cs">
+      <DependentUpon>202201311015565_attendance data edit 3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -208,6 +221,9 @@
     <Content Include="Views\AttendanceSheet\AddAttendanceSheet.cshtml" />
     <Content Include="Views\AttendanceSheet\ListAttendanceSheet.cshtml" />
     <Content Include="Views\AttendanceSheet\AddStudentToAttendanceSheet.cshtml" />
+    <Content Include="Views\Lecturer\ViewAttendances.cshtml" />
+    <Content Include="Views\Lecturer\ViewStudents.cshtml" />
+    <Content Include="Views\Lecturer\TakeAttendance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppData\" />
@@ -232,6 +248,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201251749018_second-migration.resx">
       <DependentUpon>202201251749018_second-migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201302009575_attendance data edit.resx">
+      <DependentUpon>202201302009575_attendance data edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201311012379_attendance data edit 2.resx">
+      <DependentUpon>202201311012379_attendance data edit 2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201311015565_attendance data edit 3.resx">
+      <DependentUpon>202201311015565_attendance data edit 3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

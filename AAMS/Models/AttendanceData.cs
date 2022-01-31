@@ -12,12 +12,12 @@ namespace AAMS.Models
 		public int AttendanceDataID { get; set; }
 
 		[Required(ErrorMessage = "Please Enter Attendance Sheet ID")]
-		public int AttendanceSheetID { get; set; }
+		public int AttendanceSheetId { get; set; }
 
 		[Required]
 		public DateTime Date { get; set; }
 
-		[Required(ErrorMessage = "Please enter Data for Student")]
+		//[Required(ErrorMessage = "Please enter Data for Student")]
 		public string Data { get; set; }
 
 		public virtual AttendanceSheet AttendanceSheets { get; set; }
