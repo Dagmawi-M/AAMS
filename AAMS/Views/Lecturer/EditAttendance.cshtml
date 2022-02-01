@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "EditAttendance";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LecturerLayout.cshtml";
 }
 
 <h2>EditAttendance</h2>
@@ -36,34 +36,35 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.StudentCode)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.FirstName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.FatherName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.GrandFatherName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.Batch)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Date)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Data)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.AttendanceDataID }) |
-        @Html.ActionLink("Delete", "DeleteAttendance", new { id = item.AttendanceDataID })
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.StudentCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.FatherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.GrandFatherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.Batch)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.AttendanceDataID }) |
+                @Html.ActionLink("Delete", "DeleteAttendance", new { id = item.AttendanceDataID })
+            </td>
+        </tr>
+    }
 
 </table>
