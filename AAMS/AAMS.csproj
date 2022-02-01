@@ -242,6 +242,8 @@
     <Content Include="Views\Lecturer\MarkAttendance.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Lecturer\EditAttendanceData.cshtml" />
+    <Content Include="Views\Lecturer\ViewStatus.cshtml" />
+    <Content Include="Views\Student\ViewStudentAttendances.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppData\" />
