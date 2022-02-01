@@ -31,12 +31,8 @@
             </div>
 
             <ul class="list-unstyled components">
-                <li class="active nav-item">
-                    @Html.ActionLink("Home", "Index", "Lecturer", null, new { @class = "nav-link" })
-                </li>
-                <li>
-                    @Html.ActionLink("View Attendance", "ViewAttendances", "Lecturer", null, new { @class = "nav-link" })
-                </li>
+                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">@Html.ActionLink("Home", "Index", "Lecturer")</li>
+                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "ViewAttendances" ? "active" : "")">@Html.ActionLink("View Attendance", "ViewAttendances", "Lecturer")</li>
             </ul>
         </nav>
      
@@ -46,27 +42,26 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
 
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                        <span>Toggle Sidebar</span>
-                    </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav ml-auto">
-                      
+                    <button type="button" class="btn btn-info">
+                        <a href="@Url.Action("Logout","Home")">Logout</a>
+                    </button>
+                
 
-                            <li class="nav-item">
-                                <a href="@Url.Action("Logout","Home")">Logout</a>
-                            </li>
-                         
-                            <li class="nav-item">
-                                <a>@Session["FirstName"].ToString()</a>
-                            </li>
-                        </ul>
-                    </div>
+                  
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a>@Session["FirstName"].ToString()</a>
+                </li>
+                <!--
+       <li class="nav-item">
+           <a href="@Url.Action("Logout","Home")">Logout</a>
+       </li>-->
+            </ul>
+                </div>
+        
                 </div>
             </nav>
 
@@ -88,6 +83,16 @@
                 $('#sidebar').toggleClass('active');
             });
         });
+
+
+
+            $(document).ready(function () {
+                activaTab('aaa');
+            });
+
+        function activaTab(tab) {
+            $('.nav-tabs a[href="#' + tab + '"]').tab('show');
+        };
     </script>
 
     @Scripts.Render("~/bundles/jquery")

@@ -177,6 +177,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AAMS_logo.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -238,6 +239,7 @@
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Lecturer\EditAttendance.cshtml" />
     <Content Include="Views\Lecturer\MarkAttendance.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppData\" />
