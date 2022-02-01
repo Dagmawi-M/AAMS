@@ -39,9 +39,16 @@ namespace AAMS.Controllers
         {
             if (ModelState.IsValid)
             {
+                var isRegisteredStudent = _db.StudentDatas.Where( s => s.FirstName.Equals( _user.FirstName)  && s.FatherName.Equals(_user.FatherName) && s.GrandFatherName.Equals(_user.GrandFatherName));
+                var studentRole = _user.Role.Equals("Student") ;
                 var check = _db.Users.FirstOrDefault(s => s.Email == _user.Email);
 
-                if (check == null)
+                if (isRegisteredStudent.Count() == 0 && studentRole)
+                    {
+                    ViewBag.stdError = "Student has not been registered";
+                    return View();
+                }
+                else if (check == null)
                 {
                     _user.Password = GetMD5(_user.Password);
                     _db.Configuration.ValidateOnSaveEnabled = false;
@@ -71,6 +78,7 @@ namespace AAMS.Controllers
             if (ModelState.IsValid)
             {
                 var f_password = GetMD5(password);
+                
                 var data = _db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password)).ToList();
                 var Student = _db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password) && s.Role.Equals("Student"));
                 var Lecturer = _db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password) && s.Role.Equals("Lecturer"));
@@ -83,6 +91,7 @@ namespace AAMS.Controllers
                     Session["Email"] = data.FirstOrDefault().Email;
                     Session["idUser"] = data.FirstOrDefault().ID;
 
+                
                     //Security Logic is non-existent here , will fix it later
                     if (Student.Count() > 0)
                         return RedirectToAction("Index", "Student");

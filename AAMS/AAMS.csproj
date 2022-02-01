@@ -166,6 +166,10 @@
     <Compile Include="Migrations\202201311801398_attendance data edit 5.designer.cs">
       <DependentUpon>202201311801398_attendance data edit 5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202012020212_202201311801398_attendance data edit 5.cs" />
+    <Compile Include="Migrations\202202012020212_202201311801398_attendance data edit 5.designer.cs">
+      <DependentUpon>202202012020212_202201311801398_attendance data edit 5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\AttendanceData.cs" />
@@ -282,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201311801398_attendance data edit 5.resx">
       <DependentUpon>202201311801398_attendance data edit 5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202012020212_202201311801398_attendance data edit 5.resx">
+      <DependentUpon>202202012020212_202201311801398_attendance data edit 5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
