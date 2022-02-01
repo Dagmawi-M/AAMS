@@ -1,6 +1,6 @@
 ﻿
 /* BASIC */
-@import 
+
 html {
     background-color: #56baed;
 }
@@ -34,6 +34,7 @@ h2 {
 .wrapper {
     display: flex;
     align-items: center;
+    background: rgb(118, 134, 211);
     flex-direction: column;
     justify-content: center;
     width: 100%;
