@@ -10,11 +10,12 @@
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    
+    @Styles.Render("~/Content/");
     <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="~/Content/boxDesign.css">
     <link rel="stylesheet" href="~/Content/xentos.css">
- 
-   
+
+
 </head>
 
 <body>
@@ -42,27 +43,71 @@
                     <button type="button" class="btn btn-info">
                         <a href="@Url.Action("Logout","Home")">Logout</a>
                     </button>
-                
 
-                  
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav navbar-nav ml-auto">
 
-                <li class="nav-item">
-                    <a>@Session["FirstName"].ToString()</a>
-                </li>
-                <!--
-       <li class="nav-item">
-           <a href="@Url.Action("Logout","Home")">Logout</a>
-       </li>-->
-            </ul>
-                </div>
-        
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+
+                            <li class="nav-item">
+                                <a>@Session["FirstName"].ToString()</a>
+                            </li>
+                            <!--
+                    <li class="nav-item">
+                        <a href="@Url.Action("Logout","Home")">Logout</a>
+                    </li>-->
+                        </ul>
+                    </div>
+
                 </div>
             </nav>
 
 
             @RenderBody()
+            <!--
+    <div class="row">
+        <div class="column">1</div>
+        <div class="column">2</div>
+        <div class="column">3</div>
+        <div class="column">4</div>
+    </div>
+
+
+    <div class="row">
+        <div class="column">1</div>
+        <div class="column">2</div>
+        <div class="column">3</div>
+        <div class="column">4</div>
+    </div>
+
+    <div class="wrapper">
+        <div class="one">One</div>
+        <div class="two">Two</div>
+        <div class="three">Three</div>
+        <div class="four">Four</div>
+        <div class="five">Five</div>
+        <div class="six">Six</div>
+    </div>
+
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <div>Title</div>
+            <div>Course</div>
+            <div>Semester</div>
+            <div>Section</div>
+        </div>
+    </div>
+
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <div>Title</div>
+            <div>Course</div>
+            <div>Semester</div>
+            <div>Section</div>
+        </div>
+    </div>-->
+
+
         </div>
     </div>
     @Scripts.Render("~/bundles/jquery")

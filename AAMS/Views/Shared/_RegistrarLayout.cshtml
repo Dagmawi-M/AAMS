@@ -11,6 +11,7 @@
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
+    @*@Styles.Render("~/Content/css")*@
     <link rel="stylesheet" href="~/Content/xentos.css">
 
 </head>
@@ -20,24 +21,30 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header center">
-                <h2>AAMS</h2>
+                <h2>AAMSS</h2>
                 <h6>HiLCoE</h6>
             </div>
-            <ul class="list-unstyled components">         
-                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" && ViewContext.RouteData.Values["Controller"].ToString()=="Registrar" ? "active" : "")">
-                @Html.ActionLink("Dashboard", "Index", "Registrar")
+
+            @{string actionName = @ViewContext.RouteData.Values["Action"].ToString(); }
+            @{string controllerName = ViewContext.RouteData.Values["Controller"].ToString();}
+
+            @{System.Diagnostics.Debug.WriteLine(actionName,controllerName);}
+
+
+            <ul class="list-unstyled components">
+                <li class="@(actionName== "Index" && @controllerName=="Registrar" ? "active" : "" )">
+                    @Html.ActionLink("Dashboard", "Index", "Registrar")
                 </li>
 
-                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" && ViewContext.RouteData.Values["Controller"].ToString()=="Registrar"? "active" : "")">
-                @Html.ActionLink("Students", "Index", "StudentData")
+                <li class="@(actionName== "ViewStudents" && @controllerName=="StudentData" ? "active" : "" )">
+                    @Html.ActionLink("Students", "ViewStudents", "StudentData")
+                </li>
+                <li class="@(actionName== "ViewCourses" && @controllerName=="Course" ? "active" : "" )">
+                    @Html.ActionLink("Courses", "ViewCourses", "Course")
                 </li>
 
-                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" && ViewContext.RouteData.Values["Controller"].ToString()=="Registrar"? "active" : "")">
-                @Html.ActionLink("Courses", "Index", "Course")
-                </li>
-
-                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index"  ? "active" : "")">
-                @Html.ActionLink("Attendance", "Index", "AttendanceSheet")
+                <li class="@(actionName== "ViewAttendanceSheets" && @controllerName=="AttendanceSheet" ? "active" : "" )">
+                    @Html.ActionLink("Attendance", "ViewAttendanceSheets", "AttendanceSheet")
                 </li>
             </ul>
         </nav>
