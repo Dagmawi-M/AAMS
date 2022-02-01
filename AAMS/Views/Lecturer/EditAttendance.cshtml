@@ -8,7 +8,7 @@
 <h2>EditAttendance</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+   
 </p>
 <table class="table">
     <tr>
@@ -61,7 +61,7 @@
                 @Html.DisplayFor(modelItem => item.Data)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.AttendanceDataID }) |
+                @Html.ActionLink("Edit", "EditAttendanceData", new { id = item.AttendanceDataID }) |
                 @Html.ActionLink("Delete", "DeleteAttendance", new { id = item.AttendanceDataID })
             </td>
         </tr>
