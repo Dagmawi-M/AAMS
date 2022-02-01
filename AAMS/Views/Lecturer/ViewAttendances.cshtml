@@ -5,44 +5,63 @@
     Layout = "~/Views/Shared/_LecturerLayout.cshtml";
 }
 
-<h2>ViewAttendances</h2>
 
-<table class="table">
+<table class="table table-hover  table-dark">
     <tr>
         @*<th>
                 @Html.DisplayNameFor(model => model.StudentId)
             </th>*@
-        <th>
+        <th scope="col">
             @Html.DisplayNameFor(model => model.Courses.CourseCode)
         </th>
-        <th>
+        <th scope="col">
             @Html.DisplayNameFor(model => model.Courses.CourseName)
-        </th>
+        </th scope="col">
         <th>
             @Html.DisplayNameFor(model => model.Section)
-        </th>
-        <th></th>
+        </th scope="col">
+        <th scope="col"></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
+        <tr >
             @*<td>
                     @Html.DisplayFor(modelItem => item.StudentId)
                 </td>*@
-            <td>
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.Courses.CourseCode)
             </td>
-            <td>
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.Courses.CourseName)
             </td>
-            <td>
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.Section)
             </td>
             <td>
-                @Html.ActionLink("View Students", "ViewStudents", new { id = item.AttendanceSheetId }) |
-                @Html.ActionLink("Edit Attendance", "EditAttendance", new { id = item.AttendanceSheetId }) |
-                @Html.ActionLink("Mark Attendance", "MarkAttendance", new { id = item.AttendanceSheetId })
+
+                <a href="@Url.Action("ViewStudents", "Lecturer",new { id = item.AttendanceSheetId })" class="">
+                    <i class="far fa-eye"></i>
+                    <span>
+                        <strong>View</strong>
+                    </span>
+                </a>
+                |
+                <a href="@Url.Action("EditAttendance", "Lecturer",new { id = item.AttendanceSheetId })" class="">
+                    <i class="far fa-edit"></i>
+                    <span>
+                        <strong>Edit</strong>
+                    </span>
+                </a>
+                |
+                <a href="@Url.Action("MarkAttendance", "Lecturer",new { id = item.AttendanceSheetId })" class="">
+                    <i class="far fa-check-square"></i>
+                    <span>
+                        <strong>Mark</strong>
+                    </span>
+                </a>
+
+         
             </td>
         </tr>
     }
