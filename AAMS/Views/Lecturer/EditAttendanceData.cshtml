@@ -1,0 +1,84 @@
+﻿@model AAMS.Models.AttendanceData
+
+@{
+    ViewBag.Title = "EditAttendanceData";
+    Layout = "~/Views/Shared/_LecturerLayout.cshtml";
+}
+
+<h2>EditAttendanceData</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>AttendanceData</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.AttendanceDataID)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AttendanceSheets.Students.StudentCode, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @ViewBag.StudentCode
+            @*@Html.EditorFor(model => model.AttendanceSheetId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AttendanceSheetId, "", new { @class = "text-danger" })*@
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.AttendanceSheets.Students.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @ViewBag.FirstName
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.AttendanceSheets.Students.FatherName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @ViewBag.FatherName
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.AttendanceSheets.Students.GrandFatherName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @ViewBag.GrandFatherName
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.AttendanceSheets.Students.Batch, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @ViewBag.Batch
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @*@Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })*@
+            @ViewBag.Date
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.Data, new List<SelectListItem>
+                 { new SelectListItem{Text = "Present", Value="Present", Selected=true},
+                 new SelectListItem{Text = "Absent", Value="Absent" },
+                 new SelectListItem{Text = "Permission", Value="Permission" }
+                 })
+            @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

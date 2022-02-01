@@ -56,6 +56,7 @@ namespace AAMS.Controllers
                 _context.SaveChanges();
             }
             var data = _context.AttendanceDatas.Where(a => a.Date == today).FirstOrDefault();
+            TempData["AttendanceId"] = data.AttendanceSheetId;
             return RedirectToAction("TakeAttendance");
 
         }
@@ -115,14 +116,34 @@ namespace AAMS.Controllers
             _context.AttendanceDatas.Remove(attendance);
             _context.SaveChanges();
             var sheet = _context.AttendanceDatas.Where(a => a.AttendanceSheets.CourseId == courseId).FirstOrDefault();
-            return RedirectToAction("EditAttendance",attendance.AttendanceSheetId);
+            return RedirectToAction("EditAttendance",new { id = sheet.AttendanceSheetId });
         }
+
         public ActionResult MarkAttendance(int id)
         {
             var attendance = _context.AttendanceSheets.Where(a => a.AttendanceSheetId == id).FirstOrDefault();
-            var datas = _context.AttendanceDatas.Where(a => a.AttendanceSheets.CourseId == attendance.CourseId && a.AttendanceSheets.Section == attendance.Section).GroupBy(a=> a.AttendanceSheets.StudentId).Select(a => a.FirstOrDefault()).ToList();
-
+            var datas = _context.AttendanceDatas.Where(a => a.AttendanceSheets.CourseId == attendance.CourseId && a.AttendanceSheets.Section == attendance.Section && a.Data=="Present").GroupBy(a=> a.AttendanceSheets.StudentId).Select(a => a.FirstOrDefault()).ToList();
+            
             return View(datas);
+        }
+        public ActionResult EditAttendanceData (int id)
+        {
+            var data = _context.AttendanceDatas.Where(d => d.AttendanceDataID == id).FirstOrDefault();
+            ViewBag.StudentCode = data.AttendanceSheets.Students.StudentCode;
+            ViewBag.FirstName = data.AttendanceSheets.Students.FirstName;
+            ViewBag.FatherName = data.AttendanceSheets.Students.FatherName;
+            ViewBag.GrandFatherName = data.AttendanceSheets.Students.GrandFatherName;
+            ViewBag.Batch = data.AttendanceSheets.Students.Batch;
+            ViewBag.Date = data.Date;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult EditAttendanceData(AttendanceData ad)
+        {
+            var existing = _context.AttendanceDatas.Where(d => d.AttendanceDataID == ad.AttendanceDataID).FirstOrDefault();
+            existing.Data = ad.Data;
+            _context.SaveChanges();
+            return RedirectToAction("EditAttendanceData", new { id = ad.AttendanceDataID });
         }
     }
 }
