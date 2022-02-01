@@ -237,6 +237,7 @@
     <Content Include="Views\Registrar\Index.cshtml" />
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Lecturer\EditAttendance.cshtml" />
+    <Content Include="Views\Lecturer\MarkAttendance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppData\" />

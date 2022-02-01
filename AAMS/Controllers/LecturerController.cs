@@ -117,5 +117,12 @@ namespace AAMS.Controllers
             var sheet = _context.AttendanceDatas.Where(a => a.AttendanceSheets.CourseId == courseId).FirstOrDefault();
             return RedirectToAction("EditAttendance",attendance.AttendanceSheetId);
         }
+        public ActionResult MarkAttendance(int id)
+        {
+            var attendance = _context.AttendanceSheets.Where(a => a.AttendanceSheetId == id).FirstOrDefault();
+            var datas = _context.AttendanceDatas.Where(a => a.AttendanceSheets.CourseId == attendance.CourseId && a.AttendanceSheets.Section == attendance.Section).GroupBy(a=> a.AttendanceSheets.StudentId).Select(a => a.FirstOrDefault()).ToList();
+
+            return View(datas);
+        }
     }
 }
