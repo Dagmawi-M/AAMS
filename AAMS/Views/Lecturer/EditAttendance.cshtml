@@ -18,11 +18,21 @@
 <label class="text-center text-muted">Section : @Model.First().AttendanceSheets.Section</label>
 <br />
 
+@using (Html.BeginForm())
+    {
+        <div class="form-group">
+            @Html.DropDownList("filter", new SelectList(ViewBag.Dates, "Date", "Date"))
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Filter" class="btn btn-info" />
+            </div>
+        </div>
+    }
+@*@Html.DropDownList("filter", new SelectList(ViewBag.Dates, "Date", "Date"))
+@Html.ActionLink("Filter", "FilterAttendance", new { id = Model.First().AttendanceSheetId })*@
 
 <hr />
-
-
-
 <table class="table table-hover text-center  table-sm">
     <tr class="thead-light">
         <th>
