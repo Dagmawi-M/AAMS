@@ -7,13 +7,22 @@
     Layout = "~/Views/Shared/_LecturerLayout.cshtml";
 }
 
-<h2>TakeAttendance</h2>
+<h2 class="text-center text-muted">TAKE ATTENDANCE</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
+<div class="text-right">
+    <button class="btn btn-info">
+        @Html.ActionLink("SAVE", "ViewAttendances", "lecturer")
+    </button>
+
+    <button class="btn btn-info">
+        @Html.ActionLink("CREATE", "CreateAttendance", "lecturer")
+    </button>
+</div>
+
+<hr />
+
+<table class="table table-hover text-center  table-sm">
+    <tr class="thead-light">
         <th>
             @Html.DisplayNameFor(model => model.AttendanceSheets.Students.StudentCode)
         </th>
@@ -40,35 +49,35 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.StudentCode)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.FirstName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.FatherName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.GrandFatherName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.Batch)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Date)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Data)
-    </td>
-    <td>
-        @Html.ActionLink("Present", "Present", new { id = item.AttendanceDataID }) |
-        @Html.ActionLink("Absent", "Absent", new { id = item.AttendanceDataID }) |
-        @Html.ActionLink("Permission", "Permission", new { id = item.AttendanceDataID })
-    </td>
-</tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.StudentCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.FatherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.GrandFatherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.Batch)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.ActionLink("Present", "Present", new { id = item.AttendanceDataID }) |
+                @Html.ActionLink("Absent", "Absent", new { id = item.AttendanceDataID }) |
+                @Html.ActionLink("Permission", "Permission", new { id = item.AttendanceDataID })
+            </td>
+        </tr>
     }
-    @Html.ActionLink("Done", "ViewAttendances");
+
 
 </table>

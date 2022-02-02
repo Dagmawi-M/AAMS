@@ -6,20 +6,22 @@
     Layout = "~/Views/Shared/_RegistrarLayout.cshtml";
 }
 
-@*@{
-        var unique = new List<int>();
-    }*@
 
-<h2>ViewAttendanceSheets</h2>
+<h2 class="text-center text-muted">ATTENDANCE LIST</h2>
+
+<div class="text-right">
+    <button class="btn btn-info">
+        @Html.ActionLink("CREATE", "AddAttendanceSheet", "AttendanceSheet")
+    </button>
+</div>
 
 <p>
-    @Html.ActionLink("Create New", "AddAttendanceSheet")
     @*@Html.Label("Filter By Course")
         @Html.DropDownList()*@
 
 </p>
-<table class="table">
-    <tr>
+<table class="table  table-hover text-center  table-sm">
+    <tr class="thead-light">
         @*<th>
                 @Html.DisplayNameFor(model => model.Students.StudentCode)
             </th>
@@ -76,8 +78,21 @@
                 @*@item.Section*@
             </td>
             <td>
-                @Html.ActionLink("View Sheet", "ListAttendanceSheet", new { id = item.AttendanceSheetId }) |
-                @Html.ActionLink("Delete Sheet", "DeleteAttendanceSheet", new { id = item.AttendanceSheetId })
+    
+                <a href="@Url.Action("ListAttendanceSheet", "AttendanceSheet",new { id = item.AttendanceSheetId })" class="">
+                    <i class="far fa-eye"></i>
+                    <span>
+                        <strong>View</strong>
+                    </span>
+                </a>
+
+                |
+                <a href="@Url.Action("DeleteAttendanceSheet", "AttendanceSheet",new { id = item.AttendanceSheetId })" class="">
+                    <i class="far fa-trash-alt"></i>
+                    <span>
+                        <strong>Delete</strong>
+                    </span>
+                </a>
             </td>
             @*@unique.Add(item.Courses.CourseId)*@
         </tr>

@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_RegistrarLayout.cshtml";
 }
 
-<h2>ListAttendanceSheet</h2>
+<h2 class="text-center text-muted">LIST ATTENDANCE</h2>
 
 <p>
     @Html.ActionLink("Back", "ViewAttendanceSheets") |
@@ -13,14 +13,14 @@
     @*@Html.Label("Course Code: " + ViewBag.courseCode)
         @Html.Label("Course Name: " + ViewBag.courseName)
         @Html.Label("Section: " + ViewBag.section)*@
-    <br />
+    <br/>
     <label>Course Code: @ViewBag.courseCode</label><br />
     <label>Course Name: @ViewBag.courseName</label><br />
     <label>Section: @ViewBag.section</label><br />
 </p>
-<table class="table">
-    <tr>
-        <th>
+<table class="table  table-hover text-center  table-sm">
+    <tr class="thead-light">
+        <th >
             @Html.DisplayNameFor(model => model.Students.StudentCode)
         </th>
         <th>
@@ -63,8 +63,15 @@
                 @Html.DisplayFor(modelItem => item.Section)
             </td>
             <td>
-                @Html.ActionLink("Delete", "DeleteStudentAttendance", new { id = item.AttendanceSheetId })
+         
+                <a href="@Url.Action("DeleteStudentAttendance", "AttendanceSheet",new { id = item.CourseId })" class="">
+                    <i class="far fa-trash-alt"></i>
+                    <span>
+                        <strong>Delete</strong>
+                    </span>
+                </a>
             </td>
+
         </tr>
     }
 

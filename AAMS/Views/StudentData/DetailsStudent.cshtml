@@ -5,55 +5,53 @@
     Layout = "~/Views/Shared/_RegistrarLayout.cshtml";
 }
 
-<h2>DetailsStudent</h2>
+<h2 class="text-center text-muted">STUDENT DETAIL</h2>
+<div class="text-left">
+    <button class="btn btn-default">
+        @Html.ActionLink("<", "ViewStudents", "StudentData")
+    </button>
+ </div>
+    <div>
 
-<div>
-    <h4>StudentData</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.StudentCode)
-        </dt>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.Label("STUDENT CODE", htmlAttributes: new { @class = " text-muted" }) :
+                @Html.DisplayFor(model => model.StudentCode)
+            </dt>
+            <hr />
 
-        <dd>
-            @Html.DisplayFor(model => model.StudentCode)
-        </dd>
+            <dt>
+                @Html.Label("FIRST NAME", htmlAttributes: new { @class = " text-muted" }):
+                @Html.DisplayFor(model => model.FirstName)
+            </dt>
+            <hr />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
+            <dt>
+                @Html.Label("SECOND NAME", htmlAttributes: new { @class = " text-muted" }):
+                @Html.DisplayFor(model => model.FatherName)
+            </dt>
+            <hr />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FatherName)
-        </dt>
+            <dt>
+                @Html.Label("LAST NAME", htmlAttributes: new { @class = " text-muted" }):
+                @Html.DisplayFor(model => model.GrandFatherName)
+            </dt>
+            <hr />
 
-        <dd>
-            @Html.DisplayFor(model => model.FatherName)
-        </dd>
+            <dt>
+                @Html.Label("bATCH", htmlAttributes: new { @class = " text-muted" }):
+                @Html.DisplayFor(model => model.Batch)
+            </dt>
+            <hr />
+        </dl>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GrandFatherName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.GrandFatherName)
-        </dd>
+    <div class="text-left">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Batch)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Batch)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "EditStudent", new { id = Model.StudentId }) |
-    @Html.ActionLink("Back to List", "ViewStudents")
-</p>
+        <button class="btn btn-info">
+            @Html.ActionLink("Edit", "EditStudent", new { id = Model.StudentId })
+        </button>
+    </div>

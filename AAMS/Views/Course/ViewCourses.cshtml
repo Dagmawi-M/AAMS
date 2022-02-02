@@ -6,13 +6,17 @@
     Layout = "~/Views/Shared/_RegistrarLayout.cshtml";
 }
 
-<h2>ViewCourses</h2>
+      
+<h2 class="text-center text-muted">COURSES</h2>
 
-<p>
-    @Html.ActionLink("Add Course", "AddCourse")
-</p>
-<table class="table">
-    <tr>
+<div class="text-right">
+    <button class="btn btn-info">
+        @Html.ActionLink("ADD COURSE", "AddCourse", "Course")
+    </button>
+</div>
+<hr />
+<table class="table  table-hover text-center  table-sm">
+    <tr class="thead-light">
         <th>
             @Html.DisplayNameFor(model => model.CourseCode)
         </th>
@@ -54,10 +58,32 @@
                     }*@
                 @Html.DisplayFor(modelItem => item.AssignedLecturerId)
             </td>
+
             <td>
-                @Html.ActionLink("Edit", "EditCourse", new { id = item.CourseId }) |
-                @Html.ActionLink("Details", "DetailsCourse", new { id = item.CourseId }) |
-                @Html.ActionLink("Delete", "DeleteCourse", new { id = item.CourseId })
+
+                <a href="@Url.Action("EditCourse", "Course",new { id = item.CourseId })" class="">
+                    <i class="far fa-edit"></i>
+                    <span>
+                        <strong>Edit</strong>
+                    </span>
+                </a>
+
+                |
+                <a href="@Url.Action("DetailsCourse", "Course",new { id = item.CourseId })" class="">
+                    <i class="far fa-eye"></i>
+                    <span>
+                        <strong>Details</strong>
+                    </span>
+                </a>
+
+                |
+                <a href="@Url.Action("DeleteCourse", "Course",new { id = item.CourseId })" class="">
+                    <i class="far fa-trash-alt"></i>
+                    <span>
+                        <strong>Delete</strong>
+                    </span>
+                </a>
+           
             </td>
         </tr>
     }

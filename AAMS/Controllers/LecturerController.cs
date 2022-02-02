@@ -30,7 +30,10 @@ namespace AAMS.Controllers
         {
             var attendance = _context.AttendanceSheets.Where(a => a.AttendanceSheetId == id).FirstOrDefault();
             var studentsList = _context.AttendanceSheets.Where(a => a.CourseId == attendance.CourseId && a.Section == attendance.Section).ToList();
+
             TempData["AttendanceId"] = id;
+
+           
             //attendanceId = id;
             return View(studentsList);
         }
@@ -133,10 +136,11 @@ namespace AAMS.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult EditAttendanceData(AttendanceData ad)
+        public ActionResult EditAttendanceData(AttendanceData ad,string data , string state)
         {
             var existing = _context.AttendanceDatas.Where(d => d.AttendanceDataID == ad.AttendanceDataID).FirstOrDefault();
-            existing.Data = ad.Data;
+                System.Diagnostics.Debug.WriteLine(ad.Date); 
+            existing.Data = state;
             _context.SaveChanges();
             return RedirectToAction("EditAttendanceData", new { id = ad.AttendanceDataID });
         }

@@ -5,13 +5,18 @@
     Layout = "~/Views/Shared/_RegistrarLayout.cshtml";
 }
 
-<h2>ViewStudents</h2>
+<h2 class="text-center text-muted">STUDENTS</h2>
 
-<p>
-    @Html.ActionLink("Add Student", "AddStudent")
-</p>
-<table class="table">
-    <tr>
+<div class="text-right">
+    <button class="btn btn-info">
+        @Html.ActionLink("ADD STUDENT", "AddStudent", "StudentData")
+    </button>
+</div>
+
+<hr />
+
+<table class="table  table-hover text-center  table-sm">
+    <tr class="thead-light">
         <th>
             @Html.DisplayNameFor(model => model.StudentCode)
         </th>
@@ -32,28 +37,50 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.StudentCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FatherName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GrandFatherName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Batch)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "EditStudent", new { id = item.StudentId }) |
-                @Html.ActionLink("Details", "DetailsStudent", new { id = item.StudentId }) |
-                @Html.ActionLink("Delete", "DeleteStudent", new { id = item.StudentId })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.StudentCode)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FatherName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.GrandFatherName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Batch)
+    </td>
+    <td>
+
+     
+
+        <a href="@Url.Action("EditStudent", "StudentData",new { id = item.StudentId })" class="">
+            <i class="far fa-edit"></i>
+            <span>
+                <strong>Edit</strong>
+            </span>
+        </a>
+
+        |
+        <a href="@Url.Action("DetailsStudent", "StudentData",new { id = item.StudentId })" class="">
+            <i class="far fa-eye"></i>
+            <span>
+                <strong>Details</strong>
+            </span>
+        </a>
+
+        |
+        <a href="@Url.Action("DeleteStudent", "StudentData",new { id = item.StudentId })" class="">
+            <i class="far fa-trash-alt"></i>
+            <span>
+                <strong>Delete</strong>
+            </span>
+        </a>
+    </td>
+</tr>
     }
 
 </table>
