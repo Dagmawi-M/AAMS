@@ -5,12 +5,18 @@
     Layout = "~/Views/Shared/_LecturerLayout.cshtml";
 }
 
-<h2 class="text-center text-muted">EDIT</h2>
+<h2 class="text-center text-muted">EDIT ATTENDANCE DATA</h2>
 <div class="text-left">
     <button class="btn btn-default">
         @Html.ActionLink("<", "ViewAttendances", "Lecturer")
     </button>
 </div>
+<label class="text-center text-muted">Course Code : @Model.First().AttendanceSheets.Courses.CourseCode</label>
+<br />
+<label class="text-center text-muted">Course Name : @Model.First().AttendanceSheets.Courses.CourseName</label>
+<br />
+<label class="text-center text-muted">Section : @Model.First().AttendanceSheets.Section</label>
+<br />
 
 
 <hr />

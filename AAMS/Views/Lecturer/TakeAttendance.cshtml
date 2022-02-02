@@ -8,6 +8,12 @@
 }
 
 <h2 class="text-center text-muted">TAKE ATTENDANCE</h2>
+<label class="text-center text-muted">Course Code : @Model.First().AttendanceSheets.Courses.CourseCode</label>
+<br />
+<label class="text-center text-muted">Course Name : @Model.First().AttendanceSheets.Courses.CourseName</label>
+<br />
+<label class="text-center text-muted">Section : @Model.First().AttendanceSheets.Section</label>
+<br />
 
 <div class="text-right">
     <button class="btn btn-info">
@@ -15,8 +21,8 @@
     </button>
 
     @*<button class="btn btn-info">
-        @Html.ActionLink("CREATE", "CreateAttendance", "lecturer")
-    </button>*@
+            @Html.ActionLink("CREATE", "CreateAttendance", "lecturer")
+        </button>*@
 </div>
 
 <hr />
