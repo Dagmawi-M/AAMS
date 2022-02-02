@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<AAMS.Models.Course>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_RegistrarLayout.cshtml";
@@ -6,103 +6,129 @@
 
 <h3 class="text-center">STUDENTS</h3>
 <!-- -->
-<div class="card-deck">
-    <div class="card text-white bg-secondary mb-3">
-        <div class="card-body">
-            <h5 class="card-title">Card Title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
 
-    <div class="card text-white bg-secondary mb-3">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+@foreach (var item in Model)
+{
+    <div class="card-deck">
+        <div class="card text-white bg-secondary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Card Title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
         </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
 
-    <div class="card text-white bg-secondary mb-3">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
+        @Html.DisplayFor(modelItem => item.CourseId)
+        @Html.DisplayFor(modelItem => item.CourseName)
+
+       
+
 </div>
+}
 
 
-<h3 class="text-center">COURSES</h3>
-<!-- -->
-<div class="card-deck">
-    <div class="card text-white bg-secondary mb-3">
-        <div class="card-body">
-            <h5 class="card-title">Card Title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
 
-    <div class="card text-white bg-secondary mb-3">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
+     
 
-    <div class="card text-white bg-secondary mb-3">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
-</div>
+        <div class="card-deck">
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Card Title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
 
-<h3 class="text-center">ATTENDANCE</h3>
-<!-- -->
-<div class="card-deck">
-    <div class="card text-white bg-secondary mb-3">
-        <div class="card-body">
-            <h5 class="card-title">Card Title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
 
-    <div class="card text-white bg-secondary mb-3">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
         </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
 
-    <div class="card text-white bg-secondary mb-3">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+
+        <h3 class="text-center">COURSES</h3>
+        <!-- -->
+        <div class="card-deck">
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Card Title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
         </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
+
+        <h3 class="text-center">ATTENDANCE</h3>
+        <!-- -->
+        <div class="card-deck">
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Card Title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
         </div>
-    </div>
-</div>

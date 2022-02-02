@@ -1,27 +1,54 @@
-﻿
+﻿@using AAMS.Models;
+
+
+@model IEnumerable<AAMS.Models.Course>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/StudentLayout.cshtml";
 }
+@{int counter = 1; }
 
-<h2>Student Dashboard / Index</h2>
 
-<div class="row justify-content-md-start">
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-header">
-                Wellcome
-            </div>
+
+@helper fun(string Name, String Code, int ID)
+{
+    <hr />
+    <div class="card-deck">
+        <div class="card text-white bg-secondary mb-1">
             <div class="card-body">
-                @if (Session["FullName"] != null)
-                {
-                    <p>Name: @Session["FullName"].ToString()</p>
-                    <p>Email: @Session["Email"].ToString()</p>
-                    @*<p>Role: @Session["Roles"].ToString()</p>*@
-                    @*    <a href="@Url.Action("Logout","Home")" class="btn btn-warning">Logout</a> *@
-                }
+                <h4 class="card-title">  @Name</h4>
+                <h9 class="card-text"> @Code</h9>
+            </div>
+            <div class="card-footer">
+                <p class=" text-">Lecturer : @ID</p>
             </div>
         </div>
     </div>
-</div>
+        }
 
+@helper enter() { 
+    <br />
+    }
+
+
+
+        @foreach (var item in Model)
+        {
+
+      
+           // if (counter < 3)
+           // {
+                @fun(item.CourseName, item.CourseCode, item.AssignedLecturerId);
+               // enter();
+         //   }
+
+           // else
+         //   {
+         //       counter = 0;
+         //       enter();
+         //   }
+          //  counter++;
+
+
+
+        }
