@@ -11,10 +11,7 @@
     Absent = @ViewBag.Absent <br />
     Present = @ViewBag.Present <br />
     Permission = @ViewBag.Permission <br /><br />
-    @{ 
-        double percentage = ((ViewBag.Present + ViewBag.Permission) / (ViewBag.Present + ViewBag.Permission + ViewBag.Absent)) * 100;
-    }
-    Percentage = @percentage;
+    Percentage = @ViewBag.Percentage %
 </p>
 <table class="table">
     <tr>

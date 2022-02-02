@@ -30,17 +30,14 @@ namespace AAMS.Controllers
         {
             var attendance = _context.AttendanceSheets.Where(a => a.AttendanceSheetId == id).FirstOrDefault();
             var studentsList = _context.AttendanceSheets.Where(a => a.CourseId == attendance.CourseId && a.Section == attendance.Section).ToList();
-
             TempData["AttendanceId"] = id;
-
-           
             //attendanceId = id;
             return View(studentsList);
         }
 
-        public ActionResult CreateAttendance()
+        public ActionResult CreateAttendance(int id)
         {
-            int id = (int)TempData["AttendanceId"];
+           // int id = (int)TempData["AttendanceId"];
            // int id = attendanceId;
             System.Diagnostics.Debug.WriteLine(id);
             var attendance = _context.AttendanceSheets.Where(a => a.AttendanceSheetId == id).FirstOrDefault();
@@ -62,14 +59,14 @@ namespace AAMS.Controllers
             var data = _context.AttendanceDatas.Where(a => a.Date == today).FirstOrDefault();
             TempData["AttendanceId"] = data.AttendanceSheetId;
             TempData["Date"] = today;
-            return RedirectToAction("TakeAttendance");
+            return RedirectToAction("TakeAttendance", new { id=data.AttendanceSheetId, date=today });
 
         }
-        public ActionResult TakeAttendance()
+        public ActionResult TakeAttendance(string date)
         {
-            int id = (int)TempData["AttendanceId"];
-            string date = TempData["Date"].ToString();
-            var datas = _context.AttendanceDatas.Where(a => a.AttendanceSheetId == id && a.Date== date).ToList();
+            //int id = (int)TempData["AttendanceId"];
+            //string date = TempData["Date"].ToString();
+            var datas = _context.AttendanceDatas.Where(a=>a.Date== date).ToList();
             return View(datas);
         }
 
@@ -80,7 +77,7 @@ namespace AAMS.Controllers
             _context.SaveChanges();
             TempData["AttendanceId"] = attendance.AttendanceSheetId;
             TempData["Date"] = attendance.Date;
-            return RedirectToAction("TakeAttendance");
+            return RedirectToAction("TakeAttendance", new { date = attendance.Date });
         }
         public ActionResult Absent(int id)
         {
@@ -89,7 +86,7 @@ namespace AAMS.Controllers
             _context.SaveChanges();
             TempData["AttendanceId"] = attendance.AttendanceSheetId;
             TempData["Date"] = attendance.Date;
-            return RedirectToAction("TakeAttendance");
+            return RedirectToAction("TakeAttendance", new { date = attendance.Date });
         }
         public ActionResult Permission(int id)
         {
@@ -98,7 +95,7 @@ namespace AAMS.Controllers
             _context.SaveChanges();
             TempData["AttendanceId"] = attendance.AttendanceSheetId;
             TempData["Date"] = attendance.Date;
-            return RedirectToAction("TakeAttendance");
+            return RedirectToAction("TakeAttendance", new { date = attendance.Date });
         }
 
         public ActionResult EditAttendance(int id)
@@ -121,12 +118,40 @@ namespace AAMS.Controllers
         {
             var attendance = _context.AttendanceSheets.Where(a => a.AttendanceSheetId == id).FirstOrDefault();
             var datas = _context.AttendanceDatas.Where(a => a.AttendanceSheets.CourseId == attendance.CourseId && a.AttendanceSheets.Section == attendance.Section && a.Data=="Present").GroupBy(a=> a.AttendanceSheets.StudentId).Select(a => a.FirstOrDefault()).ToList();
-            
+            var percent = new List<double>();
+            var outOfFive = new List<double>();
+            var outOfTen = new List<double>();
+            foreach(var item in datas)
+            {
+                double present = (double)_context.AttendanceDatas.Where(d => d.AttendanceSheets.StudentId == item.AttendanceSheets.StudentId && d.Data == "Present").ToList().Count();
+                double absent = (double)_context.AttendanceDatas.Where(d => d.AttendanceSheets.StudentId == item.AttendanceSheets.StudentId && d.Data == "Absent").ToList().Count();
+                double permission = (double)_context.AttendanceDatas.Where(d => d.AttendanceSheets.StudentId == item.AttendanceSheets.StudentId && d.Data == "Permission").ToList().Count();
+                double active = present + permission, total = present + permission + absent;
+                double percentage, resultFive, resultTen;
+                try
+                {
+                    percentage = (active / total) * 100;
+                }
+                catch (DivideByZeroException)
+                {
+                    percentage = 0;
+                }
+                percent.Add(percentage);
+                resultFive = (percentage / 100) * 5;
+                resultTen = (percentage / 100) * 10;
+                outOfFive.Add(resultFive);
+                outOfTen.Add(resultTen);
+            }
+            ViewBag.Percent = percent;
+            ViewBag.OutOfFive = outOfFive;
+            ViewBag.OutOfTen = outOfTen;
+
             return View(datas);
         }
         public ActionResult EditAttendanceData (int id)
         {
             var data = _context.AttendanceDatas.Where(d => d.AttendanceDataID == id).FirstOrDefault();
+            ViewBag.AttendanceDataID = id;
             ViewBag.StudentCode = data.AttendanceSheets.Students.StudentCode;
             ViewBag.FirstName = data.AttendanceSheets.Students.FirstName;
             ViewBag.FatherName = data.AttendanceSheets.Students.FatherName;
@@ -135,14 +160,18 @@ namespace AAMS.Controllers
             ViewBag.Date = data.Date;
             return View();
         }
+
         [HttpPost]
-        public ActionResult EditAttendanceData(AttendanceData ad,string data , string state)
+        public ActionResult EditAttendanceData(AttendanceData ad)
         {
-            var existing = _context.AttendanceDatas.Where(d => d.AttendanceDataID == ad.AttendanceDataID).FirstOrDefault();
-                System.Diagnostics.Debug.WriteLine(ad.Date); 
-            existing.Data = state;
+            int id = (int)TempData["AttendanceDataID"];
+            var existing = _context.AttendanceDatas.Where(d => d.AttendanceDataID == id).FirstOrDefault();
+            System.Diagnostics.Debug.WriteLine(ad.Data);
+            System.Diagnostics.Debug.WriteLine(ad.AttendanceDataID);
+            System.Diagnostics.Debug.WriteLine(ad.AttendanceSheetId);
+            existing.Data = ad.Data;
             _context.SaveChanges();
-            return RedirectToAction("EditAttendanceData", new { id = ad.AttendanceDataID });
+            return RedirectToAction("EditAttendance", new { id = existing.AttendanceSheetId });
         }
 
         public ActionResult ViewStatus(int id)
@@ -152,6 +181,18 @@ namespace AAMS.Controllers
             ViewBag.Absent = _context.AttendanceDatas.Where(a => a.AttendanceSheets.StudentId == sheet.AttendanceSheets.StudentId && a.AttendanceSheets.CourseId == sheet.AttendanceSheets.CourseId && a.Data=="Absent").ToList().Count();
             ViewBag.Present = _context.AttendanceDatas.Where(a => a.AttendanceSheets.StudentId == sheet.AttendanceSheets.StudentId && a.AttendanceSheets.CourseId == sheet.AttendanceSheets.CourseId && a.Data == "Present").ToList().Count();
             ViewBag.Permission = _context.AttendanceDatas.Where(a => a.AttendanceSheets.StudentId == sheet.AttendanceSheets.StudentId && a.AttendanceSheets.CourseId == sheet.AttendanceSheets.CourseId && a.Data == "Permission").ToList().Count();
+            double present = (double)ViewBag.Present, absent = (double)ViewBag.Absent, permission = (double)ViewBag.Permission;
+            double active = present + permission, total = present + permission + absent;
+            double percentage;
+            try
+            {
+                percentage = (active / total) * 100;
+            }
+            catch (DivideByZeroException)
+            {
+                percentage = 0;
+            }
+            ViewBag.Percentage = percentage.ToString();
             return View(student);
         }
     }

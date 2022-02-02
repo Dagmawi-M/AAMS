@@ -1,15 +1,17 @@
 ﻿@model IEnumerable<AAMS.Models.AttendanceData>
 
-
 @{
-    ViewBag.Title = "MarkAttendance";
-    Layout = "~/Views/Shared/_LecturerLayout.cshtml";
+    ViewBag.Title = "DetailsStudentAttendance";
+    Layout = "~/Views/Shared/StudentLayout.cshtml";
 }
 
-<h2>MarkAttendance</h2>
+<h2>DetailsStudentAttendance</h2>
 
 <p>
-    @*@Html.ActionLink("Create New", "Create")*@
+    Absent = @ViewBag.Absent <br />
+    Present = @ViewBag.Present <br />
+    Permission = @ViewBag.Permission <br /><br />
+    Percentage = @ViewBag.Percentage %
 </p>
 <table class="table">
     <tr>
@@ -29,18 +31,11 @@
             @Html.DisplayNameFor(model => model.AttendanceSheets.Students.Batch)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Data)
-
         </th>
-        <th>
-            Out of Five(5%)
-
-        </th>
-        <th>
-            Out of Ten(10%)
-
-        </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -61,28 +56,11 @@
         @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.Batch)
     </td>
     <td>
-        @ViewBag.Percent[0]%
-        @{
-            ViewBag.Percent.RemoveAt(0);
-        }
+        @Html.DisplayFor(modelItem => item.Date)
     </td>
     <td>
-        @ViewBag.OutOfFive[0]%
-        @{
-            ViewBag.OutOfFive.RemoveAt(0);
-        }
+        @Html.DisplayFor(modelItem => item.Data)
     </td>
-    <td>
-        @ViewBag.OutOfTen[0]%
-        @{
-            ViewBag.OutOfTen.RemoveAt(0);
-        }
-    </td>
-    @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.AttendanceDataID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.AttendanceDataID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.AttendanceDataID })
-        </td>*@
 </tr>
 }
 

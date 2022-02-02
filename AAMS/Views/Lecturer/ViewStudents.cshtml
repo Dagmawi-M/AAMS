@@ -5,41 +5,29 @@
     Layout = "~/Views/Shared/_LecturerLayout.cshtml";
 }
 
+<h2>ViewStudents</h2>
 
-<div>
-    <div class="text-left">
-        <h2 class="text-center text-muted">ATTENDANCE</h2>
-        <button class="btn btn-default text-left">
-            @Html.ActionLink("<", "ViewAttendances", "Lecturer")
-        </button>
-    </div>
-
-    <div class="text-right">
-        <button class="btn btn-info">
-            @Html.ActionLink("Take Attendance", "CreateAttendance")
-        </button>
-    </div>
-</div>
-
-<hr/>
-<table class="table table-hover text-center table-sm">
-    <tr class="thead-light">
-        <th scope="col">
+<p>
+    @Html.ActionLink("Take Attendance", "CreateAttendance",new { id = Model.First().AttendanceSheetId })
+</p>
+<table class="table">
+    <tr>
+        <th>
             @Html.DisplayNameFor(model => model.Students.StudentCode)
         </th>
-        <th scope="col">
+        <th>
             @Html.DisplayNameFor(model => model.Students.FirstName)
         </th>
-        <th scope="col">
+        <th>
             @Html.DisplayNameFor(model => model.Students.FatherName)
         </th>
-        <th scope="col">
+        <th>
             @Html.DisplayNameFor(model => model.Students.GrandFatherName)
         </th>
-        <th scope="col">
+        <th>
             @Html.DisplayNameFor(model => model.Students.Batch)
         </th>
-        @*<th scope="col>
+        @*<th>
                 @Html.DisplayNameFor(model => model.CourseId)
             </th>
             <th>
@@ -51,26 +39,25 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td scope="row">
+            <td>
                 @Html.DisplayFor(modelItem => item.Students.StudentCode)
             </td>
-            <td scope="row">
+            <td>
                 @Html.DisplayFor(modelItem => item.Students.FirstName)
             </td>
-            <td scope="row">
+            <td>
                 @Html.DisplayFor(modelItem => item.Students.FatherName)
             </td>
-            <td scope="row">
+            <td>
                 @Html.DisplayFor(modelItem => item.Students.GrandFatherName)
             </td>
-            <td scope="row">
+            <td>
                 @Html.DisplayFor(modelItem => item.Students.Batch)
             </td>
-            <td scope="row">
+            <td>
                 @Html.ActionLink("View Status", "ViewStatus", new { id = item.AttendanceSheetId })
             </td>
         </tr>
     }
 
 </table>
-

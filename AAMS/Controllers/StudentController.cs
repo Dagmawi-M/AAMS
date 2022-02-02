@@ -37,5 +37,27 @@ namespace AAMS.Controllers
            // @System.Diagnostics.Debug.WriteLine("test : ", _db.AttendanceDatas.Count());
             return View(datas);
         }
+
+        public ActionResult DetailsStudentAttendance(int id)
+        {
+            var attendance = _db.AttendanceDatas.Where(a => a.AttendanceDataID == id).FirstOrDefault();
+            var datas = _db.AttendanceDatas.Where(a => a.AttendanceSheets.StudentId == attendance.AttendanceSheets.StudentId && a.AttendanceSheets.CourseId == attendance.AttendanceSheets.CourseId).ToList();
+            ViewBag.Present = _db.AttendanceDatas.Where(a => a.AttendanceSheets.StudentId == attendance.AttendanceSheets.StudentId && a.AttendanceSheets.CourseId == attendance.AttendanceSheets.CourseId && a.Data=="Present").ToList().Count();
+            ViewBag.Absent = _db.AttendanceDatas.Where(a => a.AttendanceSheets.StudentId == attendance.AttendanceSheets.StudentId && a.AttendanceSheets.CourseId == attendance.AttendanceSheets.CourseId && a.Data == "Absent").ToList().Count();
+            ViewBag.Permission = _db.AttendanceDatas.Where(a => a.AttendanceSheets.StudentId == attendance.AttendanceSheets.StudentId && a.AttendanceSheets.CourseId == attendance.AttendanceSheets.CourseId && a.Data == "Permission").ToList().Count();
+            double present = (double)ViewBag.Present, absent = (double)ViewBag.Absent, permission = (double)ViewBag.Permission;
+            double active = present + permission, total = present + permission + absent;
+            double percentage;
+            try
+            {
+                percentage = (active / total) * 100;
+            }
+            catch (DivideByZeroException)
+            {
+                percentage = 0;
+            }
+            ViewBag.Percentage = percentage.ToString();
+            return View(datas);
+        }
     }
 }
