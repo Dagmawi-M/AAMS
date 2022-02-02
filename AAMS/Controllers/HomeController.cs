@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Security.Cryptography;
 using System.Text;
 
+
 namespace AAMS.Controllers
 {
     public class HomeController : Controller
@@ -40,10 +41,11 @@ namespace AAMS.Controllers
             if (ModelState.IsValid)
             {
                 var isRegisteredStudent = _db.StudentDatas.Where( s => s.FirstName.Equals( _user.FirstName)  && s.FatherName.Equals(_user.FatherName) && s.GrandFatherName.Equals(_user.GrandFatherName));
-                var studentRole = _user.Role.Equals("Student") ;
+                var IsRolesStudent = _user.Role.Equals("Student") ;
                 var check = _db.Users.FirstOrDefault(s => s.Email == _user.Email);
 
-                if (isRegisteredStudent.Count() == 0 && studentRole)
+ 
+                    if (isRegisteredStudent.Count() == 0 && IsRolesStudent)
                     {
                     ViewBag.stdError = "Student has not been registered";
                     return View();
@@ -53,13 +55,13 @@ namespace AAMS.Controllers
                     _user.Password = GetMD5(_user.Password);
                     _db.Configuration.ValidateOnSaveEnabled = false;
                     _db.Users.Add(_user);
-            
                     _db.SaveChanges();
                     return RedirectToAction("Index");
                 }
                 else
                 {
                     ViewBag.error = "Email already exists";
+
                     return View();
                 }
             }
@@ -78,23 +80,39 @@ namespace AAMS.Controllers
             if (ModelState.IsValid)
             {
                 var f_password = GetMD5(password);
-                
-                var data = _db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password)).ToList();
-                var Student = _db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password) && s.Role.Equals("Student"));
-                var Lecturer = _db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password) && s.Role.Equals("Lecturer"));
-                var Registrar = _db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password) && s.Role.Equals("Registrar"));
-                if (data.Count() > 0)
-                {
-                    //add session
-                    Session["FirstName"] = data.FirstOrDefault().FirstName;
-                    Session["FullName"] = data.FirstOrDefault().FullName;
-                    Session["Email"] = data.FirstOrDefault().Email;
-                    Session["idUser"] = data.FirstOrDefault().ID;
+                string FirstName=""; string FatherName=""; string GrandFatherName="";
 
+
+                //  var data = _db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password))?.ToList();
+
+                var loggedInUser = _db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password))?.ToList().FirstOrDefault();
+
+                if (loggedInUser != null)
+                {
+                    FirstName = loggedInUser.FirstName;
+                    FatherName = loggedInUser.FatherName;
+                    GrandFatherName = loggedInUser.GrandFatherName;
                 
+                    var loggedInStudent = _db.StudentDatas.Where(s => s.FirstName.Equals(FirstName) && s.FatherName.Equals(FatherName) && s.GrandFatherName.Equals(GrandFatherName)).FirstOrDefault();
+                
+                    var Student = _db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password) && s.Role.Equals("Student"));
+                    var Lecturer = _db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password) && s.Role.Equals("Lecturer"));
+                    var Registrar = _db.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password) && s.Role.Equals("Registrar"));
+
+                    //add session
+                    Session["FirstName"] = FirstName; ;
+                    Session["FatherName"] = FatherName;
+                    Session["GrandFatherName"] = GrandFatherName; 
+                    Session["FullName"] = loggedInUser.FullName;
+                    Session["Email"] = loggedInUser.Email;
+                    Session["idUser"] = loggedInUser.ID;
+
                     //Security Logic is non-existent here , will fix it later
-                    if (Student.Count() > 0)
+                    if (Student.Count() > 0) {
+                        Session["StudentId"] = loggedInStudent.StudentId;
                         return RedirectToAction("Index", "Student");
+                    }
+                       
                     else if (Lecturer.Count() > 0)
                         return RedirectToAction("Index", "Lecturer");
                     else if (Registrar.Count() > 0)
@@ -102,7 +120,7 @@ namespace AAMS.Controllers
                 }
                 else
                 {
-                    ViewBag.error = "Login failed";
+                    ViewBag.errorL = "Login failed";
                     return RedirectToAction("Login");
                 }
             }

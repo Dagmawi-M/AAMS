@@ -7,9 +7,7 @@
 
 <h2>ViewStudentAttendances</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -21,18 +19,21 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.AttendanceSheets.Courses.CourseCode)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.AttendanceSheets.Courses.CourseName)
-    </td>
-    <td>
-        @Html.ActionLink("Details", "Details", new { id = item.AttendanceDataID }) 
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceSheets.StudentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceSheets.Courses.CourseName)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.AttendanceDataID })
+            </td>
+        </tr>
+
+
+    }
 
 </table>

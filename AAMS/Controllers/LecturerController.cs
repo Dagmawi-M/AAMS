@@ -12,12 +12,13 @@ namespace AAMS.Controllers
         // GET: Lecturer
         ApplicationDbContext _context = new ApplicationDbContext();
        // int attendanceId = 0;
+
         public ActionResult Index()
         {
             //  return RedirectToAction("ViewAttendances");
-
             return View();
         }
+
         public ActionResult ViewAttendances()
         {
             int id = (int)Session["idUser"];
