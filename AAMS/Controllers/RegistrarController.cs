@@ -18,7 +18,7 @@ namespace AAMS.Controllers
            // var uniqueSheets = _context.AttendanceSheets.Select(a => new { a.CourseId, a.Courses, a.Section }).Distinct().ToList();
             //ViewBag.unique = uniqueSheets;
            // return View(_context.AttendanceSheets.GroupBy(a => a.CourseId).Select(a => a.FirstOrDefault()).ToList());
-            var course = _context.Courses.ToList();
+            var course = _context.AttendanceSheets.ToList();
             return View(course);
         }
     }

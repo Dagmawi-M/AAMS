@@ -26,29 +26,9 @@
     </div>
         }
 
-@helper enter() { 
-    <br />
-    }
-
-
 
         @foreach (var item in Model)
         {
-
-      
-           // if (counter < 3)
-           // {
                 @fun(item.CourseName, item.CourseCode, item.AssignedLecturerId);
-               // enter();
-         //   }
-
-           // else
-         //   {
-         //       counter = 0;
-         //       enter();
-         //   }
-          //  counter++;
-
-
-
+ 
         }
