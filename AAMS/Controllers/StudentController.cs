@@ -33,7 +33,7 @@ namespace AAMS.Controllers
             int studentId = (int)Session["StudentId"];
             @System.Diagnostics.Debug.WriteLine(studentId);
 
-            var datas = _db.AttendanceDatas.Where(a => a.AttendanceSheets.StudentId == studentId)?.ToList();
+            var datas = _db.AttendanceDatas.Where(a => a.AttendanceSheets.StudentId == studentId).GroupBy(a=>a.AttendanceSheets.CourseId).Select(a=>a.FirstOrDefault()).ToList();
            // @System.Diagnostics.Debug.WriteLine("test : ", _db.AttendanceDatas.Count());
             return View(datas);
         }
