@@ -19,7 +19,7 @@ namespace AAMS.Controllers
 
         public ActionResult ViewStudents()
         {
-            return View(_context.StudentDatas.ToList());
+            return View(_context.StudentDatas.OrderBy(a => a.FirstName).ToList());
         }
 
         public ActionResult DetailsStudent(int id)

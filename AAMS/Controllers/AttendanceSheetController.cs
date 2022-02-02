@@ -19,14 +19,14 @@ namespace AAMS.Controllers
         {
             var uniqueSheets = _context.AttendanceSheets.Select(a => new { a.CourseId, a.Courses, a.Section }).Distinct().ToList();
             ViewBag.unique = uniqueSheets;
-            return View(_context.AttendanceSheets.GroupBy(a => a.CourseId).Select(a => a.FirstOrDefault()).ToList()); 
+            return View(_context.AttendanceSheets.GroupBy(a => new { a.CourseId, a.Section }).Select(a => a.FirstOrDefault()).ToList()); 
         }
 
         public ActionResult ListAttendanceSheet(int id)
         {
             var attendanceSheet = _context.AttendanceSheets.Where(ash => ash.AttendanceSheetId == id).FirstOrDefault();
             var studentsList = _context.AttendanceSheets.Where(ash => ash.CourseId == attendanceSheet.CourseId
-                && ash.Section == attendanceSheet.Section).ToList();
+                && ash.Section == attendanceSheet.Section).OrderBy(a=>a.Students.FirstName).ToList();
             ViewBag.courseCode = attendanceSheet.Courses.CourseCode;
             ViewBag.courseName = attendanceSheet.Courses.CourseName;
             ViewBag.assignedLecturer = attendanceSheet.Courses.AssignedLecturerId;

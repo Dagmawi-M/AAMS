@@ -22,7 +22,7 @@ namespace AAMS.Controllers
             //{
             //    lecturers.Add(_context.Users.Where(a => a.ID == item.AssignedLecturerId));
             //}
-            return View(_context.Courses.ToList());
+            return View(_context.Courses.OrderBy(c=>c.CourseName).ToList());
         }
 
         public ActionResult DetailsCourse(int id)

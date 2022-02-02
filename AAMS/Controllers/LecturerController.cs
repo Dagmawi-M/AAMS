@@ -31,7 +31,7 @@ namespace AAMS.Controllers
         public ActionResult ViewStudents(int id)
         {
             var attendance = _context.AttendanceSheets.Where(a => a.AttendanceSheetId == id).FirstOrDefault();
-            var studentsList = _context.AttendanceSheets.Where(a => a.CourseId == attendance.CourseId && a.Section == attendance.Section).ToList();
+            var studentsList = _context.AttendanceSheets.Where(a => a.CourseId == attendance.CourseId && a.Section == attendance.Section).OrderBy(a => a.Students.FirstName).ToList();
             TempData["AttendanceId"] = id;
             //attendanceId = id;
             return View(studentsList);
@@ -68,7 +68,7 @@ namespace AAMS.Controllers
         {
             //int id = (int)TempData["AttendanceId"];
             //string date = TempData["Date"].ToString();
-            var datas = _context.AttendanceDatas.Where(a=>a.Date== date).ToList();
+            var datas = _context.AttendanceDatas.Where(a=>a.Date== date).OrderBy(a => a.AttendanceSheets.Students.FirstName).ToList();
             return View(datas);
         }
 
@@ -105,9 +105,9 @@ namespace AAMS.Controllers
             var attendance = _context.AttendanceSheets.Where(a => a.AttendanceSheetId == id).FirstOrDefault();
             var datas = new List<AttendanceData>();
             if (date == "")
-                datas = _context.AttendanceDatas.Where(a => a.AttendanceSheets.CourseId == attendance.CourseId && a.AttendanceSheets.Section == attendance.Section).ToList();
+                datas = _context.AttendanceDatas.Where(a => a.AttendanceSheets.CourseId == attendance.CourseId && a.AttendanceSheets.Section == attendance.Section).OrderBy(a => a.AttendanceSheets.Students.FirstName).ToList();
             else
-               datas = _context.AttendanceDatas.Where(a => a.AttendanceSheets.CourseId == attendance.CourseId && a.AttendanceSheets.Section == attendance.Section && a.Date==date).ToList();
+               datas = _context.AttendanceDatas.Where(a => a.AttendanceSheets.CourseId == attendance.CourseId && a.AttendanceSheets.Section == attendance.Section && a.Date==date).OrderBy(a => a.AttendanceSheets.Students.FirstName).ToList();
             var dates = _context.AttendanceDatas.GroupBy(a => a.Date).Select(a => a.FirstOrDefault()).ToList();
             TempData["AttendanceId"] = datas.First().AttendanceSheetId;
             ViewBag.Dates = dates;
@@ -139,7 +139,7 @@ namespace AAMS.Controllers
         public ActionResult MarkAttendance(int id)
         {
             var attendance = _context.AttendanceSheets.Where(a => a.AttendanceSheetId == id).FirstOrDefault();
-            var datas = _context.AttendanceDatas.Where(a => a.AttendanceSheets.CourseId == attendance.CourseId && a.AttendanceSheets.Section == attendance.Section && a.Data=="Present").GroupBy(a=> a.AttendanceSheets.StudentId).Select(a => a.FirstOrDefault()).ToList();
+            var datas = _context.AttendanceDatas.Where(a => a.AttendanceSheets.CourseId == attendance.CourseId && a.AttendanceSheets.Section == attendance.Section && a.Data=="Present").OrderBy(a => a.AttendanceSheets.Students.FirstName).GroupBy(a=> a.AttendanceSheets.StudentId).Select(a => a.FirstOrDefault()).ToList();
             var percent = new List<double>();
             var outOfFive = new List<double>();
             var outOfTen = new List<double>();

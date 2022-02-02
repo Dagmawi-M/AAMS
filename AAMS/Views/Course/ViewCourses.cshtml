@@ -29,9 +29,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Year)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.AssignedLecturerId)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -50,14 +50,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Year)
             </td>
-            <td>
+            <!--<td>-->
                 @*@{
                         ApplicationDbContext _context = new ApplicationDbContext();
                         var lecturer = _context.Users.Where(l => l.ID == item.AssignedLecturerId).FirstOrDefault();
                         Html.Display(lecturer.FirstName);
                     }*@
-                @Html.DisplayFor(modelItem => item.AssignedLecturerId)
-            </td>
+                @*@Html.DisplayFor(modelItem => item.AssignedLecturerId)*@
+            <!--</td>-->
 
             <td>
 
