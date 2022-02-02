@@ -6,16 +6,20 @@
     Layout = "~/Views/Shared/_LecturerLayout.cshtml";
 }
 
-<h2 class="text-center text-muted">MarkAttendance</h2>
+<h2 class="text-center text-muted">MARK ATTENDANCE DATA</h2>
 <div class="text-left">
     <button class="btn btn-default">
         @Html.ActionLink("<  ", "ViewAttendances", "Lecturer")
     </button>
 </div>
 
-<p>
-    @*@Html.ActionLink("Create New", "Create")*@
-</p>
+<label class="text-center text-muted">Course Code : @Model.First().AttendanceSheets.Courses.CourseCode</label>
+<br />
+<label class="text-center text-muted">Course Name : @Model.First().AttendanceSheets.Courses.CourseName</label>
+<br />
+<label class="text-center text-muted">Section : @Model.First().AttendanceSheets.Section</label>
+<br />
+
 <table class="table  table-hover text-center  table-sm">
     <tr class="thead-light">
         <th>

@@ -5,7 +5,11 @@
     Layout = "~/Views/Shared/_LecturerLayout.cshtml";
 }
 
-<h2 class="text-center text-muted">ViewStudents</h2>
+<h2 class="text-center text-muted">View Students</h2>
+
+<label class="text-center text-muted">Course Code : @Model.First().Courses.CourseCode</label><br />
+<label class="text-center text-muted">Course Name : @Model.First().Courses.CourseName</label><br />
+<label class="text-center text-muted">Section : @Model.First().Section</label><br />
 
 <div class="text-right">
     <button class="btn btn-info">
@@ -62,7 +66,12 @@
             </td>
             <td>
              
-                @Html.ActionLink("View Status", "ViewStatus", new { id = item.AttendanceSheetId })
+                <a href="@Url.Action("ViewStatus", "Lecturer",new { id = item.AttendanceSheetId })" class="">
+                    <i class="far fa-eye"></i>
+                    <span>
+                        <strong>View</strong>
+                    </span>
+                </a>
             </td>
         </tr>
     }

@@ -5,18 +5,34 @@
     Layout = "~/Views/Shared/_LecturerLayout.cshtml";
 }
 
-<h2 class="text-center text-muted">EDIT</h2>
+<h2 class="text-center text-muted">EDIT ATTENDANCE DATA</h2>
 <div class="text-left">
     <button class="btn btn-default">
         @Html.ActionLink("<", "ViewAttendances", "Lecturer")
     </button>
 </div>
+<label class="text-center text-muted">Course Code : @Model.First().AttendanceSheets.Courses.CourseCode</label>
+<br />
+<label class="text-center text-muted">Course Name : @Model.First().AttendanceSheets.Courses.CourseName</label>
+<br />
+<label class="text-center text-muted">Section : @Model.First().AttendanceSheets.Section</label>
+<br />
 
+@using (Html.BeginForm())
+    {
+        <div class="form-group">
+            @Html.DropDownList("filter", new SelectList(ViewBag.Dates, "Date", "Date"))
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Filter" class="btn btn-info" />
+            </div>
+        </div>
+    }
+@*@Html.DropDownList("filter", new SelectList(ViewBag.Dates, "Date", "Date"))
+@Html.ActionLink("Filter", "FilterAttendance", new { id = Model.First().AttendanceSheetId })*@
 
 <hr />
-
-
-
 <table class="table table-hover text-center  table-sm">
     <tr class="thead-light">
         <th>

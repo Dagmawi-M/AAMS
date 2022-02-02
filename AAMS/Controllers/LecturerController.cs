@@ -100,11 +100,31 @@ namespace AAMS.Controllers
             return RedirectToAction("TakeAttendance", new { date = attendance.Date });
         }
 
-        public ActionResult EditAttendance(int id)
+        public ActionResult EditAttendance(int id, string date="")
         {
             var attendance = _context.AttendanceSheets.Where(a => a.AttendanceSheetId == id).FirstOrDefault();
-            var datas = _context.AttendanceDatas.Where(a => a.AttendanceSheets.CourseId == attendance.CourseId && a.AttendanceSheets.Section==attendance.Section).ToList();
+            var datas = new List<AttendanceData>();
+            if (date == "")
+                datas = _context.AttendanceDatas.Where(a => a.AttendanceSheets.CourseId == attendance.CourseId && a.AttendanceSheets.Section == attendance.Section).ToList();
+            else
+               datas = _context.AttendanceDatas.Where(a => a.AttendanceSheets.CourseId == attendance.CourseId && a.AttendanceSheets.Section == attendance.Section && a.Date==date).ToList();
+            var dates = _context.AttendanceDatas.GroupBy(a => a.Date).Select(a => a.FirstOrDefault()).ToList();
+            TempData["AttendanceId"] = datas.First().AttendanceSheetId;
+            ViewBag.Dates = dates;
             return View(datas);
+        }
+        [HttpPost]
+        public ActionResult EditAttendance()
+        {
+            string filter = Request.Form["filter"].ToString();
+            int id = (int)TempData["AttendanceId"];
+            return RedirectToAction("EditAttendance", new { id = id, date = filter });
+        }
+
+        public ActionResult FilterAttendance(int id)
+        {
+            string filter = Request.Form["filter"].ToString();
+            return RedirectToAction("EditAttendance", new { id = id, date = filter });
         }
         public ActionResult DeleteAttendance(int id)
         {
