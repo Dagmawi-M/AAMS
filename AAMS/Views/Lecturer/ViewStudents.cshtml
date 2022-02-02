@@ -9,7 +9,7 @@
 
 <div class="text-right">
     <button class="btn btn-info">
-        @Html.ActionLink("TAKE ATTENDANCE", "CreateAttendance", "Lecturer")
+        @Html.ActionLink("TAKE ATTENDANCE", "CreateAttendance", new { id=Model.First().AttendanceSheetId })
     </button>
 </div>
 
