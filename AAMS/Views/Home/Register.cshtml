@@ -47,6 +47,13 @@
                    new SelectListItem{Text = "Student", Value="Student" }
                    })
                         @Html.ValidationMessageFor(m => m.Role, "", new { @class = "badge badge-danger" })
+                      
+                    @if (ViewBag.stdError != null)
+                    {
+                        <span class="badge badge-danger">@ViewBag.stdError</span>
+                    }
+                    
+
                     </div>
 
 

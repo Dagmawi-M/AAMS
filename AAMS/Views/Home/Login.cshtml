@@ -1,6 +1,7 @@
 ﻿@model AAMS.Models.User
 @{
     ViewBag.Title = "Login";
+  
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -19,11 +20,17 @@
     </div>
     <div class="form-group">
         <input type="submit" name="submit" class="btn btn-black" value="Login" />
-
+        @{ if (@ViewBag.error != null)
+            {
+        <span class="badge badge-danger">@ViewBag.errorL</span>
+                }
+            }
     </div>
-    <div>
 
-        <a href="@Url.Action("Register", "Home")" class="btn btn-secondary">Register</a>
-    </div>
+    
+<div>
+
+    <a href="@Url.Action("Register", "Home")" class="btn btn-secondary">Register</a>
+</div>
 }
 

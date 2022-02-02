@@ -23,15 +23,11 @@
                 <h2>AAMS</h2>
                 <h6>HiLCoE</h6>
             </div>
-
             <ul class="list-unstyled components">
-                <li class="active nav-item">
-                    @Html.ActionLink("Dashboard", "Index", "Student", null, new { @class = "nav-link" })
-                </li>
-                <li>
-                    @Html.ActionLink("Attendance Reports", "ViewStudentAttendances", "Student", null, new { @class = "nav-link" })
-                </li>
+                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">@Html.ActionLink("Dashboard", "Index", "Student")</li>
+                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "ViewStudentAttendances" ? "active" : "")">@Html.ActionLink("Attendance Reports", "ViewStudentAttendances", "Student")</li>
             </ul>
+          
         </nav>
 
         <!-- Page Content  -->
