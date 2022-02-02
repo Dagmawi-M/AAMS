@@ -25,7 +25,9 @@ namespace AAMS.Controllers
   
         public ActionResult Index()
         {
-            return View();
+            var course = _db.Courses.ToList();
+            return View(course);
+   
         }
 
         public ActionResult ViewStudentAttendances()

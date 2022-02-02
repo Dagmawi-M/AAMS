@@ -1,108 +1,41 @@
-﻿
+﻿@using AAMS.Models;
+
+@model IEnumerable<AAMS.Models.AttendanceSheet>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_RegistrarLayout.cshtml";
 }
 
-<h3 class="text-center">STUDENTS</h3>
+<h3 class="text-center">Dashboard</h3>
 <!-- -->
-<div class="card-deck">
-    <div class="card text-white bg-secondary mb-3">
-        <div class="card-body">
-            <h5 class="card-title">Card Title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
-
-    <div class="card text-white bg-secondary mb-3">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
+@helper fun(string Name, string Section, string Course)
+{
+    <hr />
+    <div class="card-deck">
+        <div class="card text-white bg-secondary mb-1">
+            <div class="card-body">
+                <h4 class="card-title">  @Name</h4>
+                <h9 class="card-text"> @Course</h9>
+            </div>
+            <div class="card-footer">
+                <p class=" text-">Section : @Section</p>
+            </div>
         </div>
     </div>
-
-    <div class="card text-white bg-secondary mb-3">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
-</div>
+}
 
 
-<h3 class="text-center">COURSES</h3>
-<!-- -->
-<div class="card-deck">
-    <div class="card text-white bg-secondary mb-3">
-        <div class="card-body">
-            <h5 class="card-title">Card Title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
 
-    <div class="card text-white bg-secondary mb-3">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
 
-    <div class="card text-white bg-secondary mb-3">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
-</div>
+@foreach (var item in Model)
+{
 
-<h3 class="text-center">ATTENDANCE</h3>
-<!-- -->
-<div class="card-deck">
-    <div class="card text-white bg-secondary mb-3">
-        <div class="card-body">
-            <h5 class="card-title">Card Title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
 
-    <div class="card text-white bg-secondary mb-3">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
+    // if (counter < 3)
+    // {
+    @fun(item.Students.Batch, item.Section, item.Courses.CourseName);
+    // enter();
 
-    <div class="card text-white bg-secondary mb-3">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
-</div>
+
+
+}
