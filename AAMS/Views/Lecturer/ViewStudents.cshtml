@@ -10,24 +10,24 @@
 <p>
     @Html.ActionLink("Take Attendance", "CreateAttendance")
 </p>
-<table class="table">
+<table class="table table table-hover  table-dark">
     <tr>
-        <th>
+        <th scope="col">
             @Html.DisplayNameFor(model => model.Students.StudentCode)
         </th>
-        <th>
+        <th scope="col">
             @Html.DisplayNameFor(model => model.Students.FirstName)
         </th>
-        <th>
+        <th scope="col">
             @Html.DisplayNameFor(model => model.Students.FatherName)
         </th>
-        <th>
+        <th scope="col">
             @Html.DisplayNameFor(model => model.Students.GrandFatherName)
         </th>
-        <th>
+        <th scope="col">
             @Html.DisplayNameFor(model => model.Students.Batch)
         </th>
-        @*<th>
+        @*<th scope="col>
                 @Html.DisplayNameFor(model => model.CourseId)
             </th>
             <th>
@@ -39,22 +39,22 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.Students.StudentCode)
             </td>
-            <td>
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.Students.FirstName)
             </td>
-            <td>
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.Students.FatherName)
             </td>
-            <td>
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.Students.GrandFatherName)
             </td>
-            <td>
+            <td scope="row">
                 @Html.DisplayFor(modelItem => item.Students.Batch)
             </td>
-            <td>
+            <td scope="row">
                 @Html.ActionLink("View Status", "ViewStatus", new { id = item.AttendanceSheetId })
             </td>
         </tr>
