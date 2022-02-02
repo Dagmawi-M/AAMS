@@ -9,10 +9,15 @@
 <h2 class="text-center text-muted">ATTENDANCE RESULT DETAILS</h2>
 <div class="text-left">
     <button class="btn btn-default">
-        @Html.ActionLink("<  ", "ViewStudentAttendances", "Sttudent")
+        @Html.ActionLink("<  ", "ViewStudentAttendances", "Student")
     </button>
 </div>
-
+<label class="text-center text-muted">Course Code : @Model.First().AttendanceSheets.Courses.CourseCode</label>
+<br />
+<label class="text-center text-muted">Course Name : @Model.First().AttendanceSheets.Courses.CourseName</label>
+<br />
+<label class="text-center text-muted">Section : @Model.First().AttendanceSheets.Section</label>
+<br />
 <br />
 
 <h7 class=" text-muted ">
@@ -20,58 +25,58 @@
     PRESENT = @ViewBag.Present |
     PERMISSION = @ViewBag.Permission <br />
     Percentage = @ViewBag.Percentage % <br />
-    </h7>
+</h7>
 <hr />
-    <table class="table  table-hover text-center  table-sm">
-        <tr class="thead-light">
-            <th>
-                @Html.Label("STUDENT ID")
-            </th>
-            <th>
-                @Html.Label("FIRST NAME")
-            </th>
-            <th>
-                @Html.Label("SECOND NAME")
-            </th>
-            <th>
-                @Html.Label("LAST NAME")
-            </th>
-            <th>
-                @Html.Label("BATCH")
-            </th>
-            <th>
-                @Html.Label("DATE")
-            </th>
-            <th>
-                @Html.Label("DATA")
-            </th>
+<table class="table  table-hover text-center  table-sm">
+    <tr class="thead-light">
+        <th>
+            @Html.Label("STUDENT ID")
+        </th>
+        <th>
+            @Html.Label("FIRST NAME")
+        </th>
+        <th>
+            @Html.Label("SECOND NAME")
+        </th>
+        <th>
+            @Html.Label("LAST NAME")
+        </th>
+        <th>
+            @Html.Label("BATCH")
+        </th>
+        <th>
+            @Html.Label("DATE")
+        </th>
+        <th>
+            @Html.Label("DATA")
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.StudentCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.FatherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.GrandFatherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.Batch)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
         </tr>
+    }
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.StudentCode)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.FatherName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.GrandFatherName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.Batch)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data)
-                </td>
-            </tr>
-        }
-
-    </table>
+</table>
