@@ -27,8 +27,9 @@
                 <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">@Html.ActionLink("Dashboard", "Index", "Student")</li>
                 <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "ViewStudentAttendances" ? "active" : "")">@Html.ActionLink("Attendance Reports", "ViewStudentAttendances", "Student")</li>
             </ul>
-          
+
         </nav>
+
 
         <!-- Page Content  -->
         <div id="content">
@@ -36,27 +37,24 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
 
-
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <a href="@Url.Action("Logout","Home")">Logout</a>
-                    </button>
-
+                    <h5 class="text-muted">@Session["FirstName"].ToString()</h5>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
 
+
                             <li class="nav-item">
-                                <a>@Session["FirstName"].ToString()</a>
+                                <button type="button" class="btn btn-info ">
+                                    <a href="@Url.Action("Logout","Home")">Logout</a>
+                                </button>
+
                             </li>
-                            <!--
-                        <li class="nav-item">
-                            <a href="@Url.Action("Logout","Home")">Logout</a>
-                        </li>-->
                         </ul>
                     </div>
 
                 </div>
             </nav>
+
             @RenderBody()
         </div>
 

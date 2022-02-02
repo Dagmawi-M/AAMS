@@ -5,10 +5,16 @@
     Layout = "~/Views/Shared/_RegistrarLayout.cshtml";
 }
 
-<h2>DetailsCourse</h2>
+<h2 class="text-center text-muted">DetailsCourse</h2>
+
+<div class="text-left">
+    <button class="btn btn-default">
+        @Html.ActionLink("<", "ViewCourses", "Course")
+    </button>
+</div>
 
 <div>
-    <h4>Course</h4>
+
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -18,7 +24,7 @@
         <dd>
             @Html.DisplayFor(model => model.CourseCode)
         </dd>
-
+        <hr />
         <dt>
             @Html.DisplayNameFor(model => model.CourseName)
         </dt>
@@ -26,7 +32,7 @@
         <dd>
             @Html.DisplayFor(model => model.CourseName)
         </dd>
-
+        <hr />
         <dt>
             @Html.DisplayNameFor(model => model.Semester)
         </dt>
@@ -34,7 +40,7 @@
         <dd>
             @Html.DisplayFor(model => model.Semester)
         </dd>
-
+        <hr />
         <dt>
             @Html.DisplayNameFor(model => model.Year)
         </dt>
@@ -42,7 +48,7 @@
         <dd>
             @Html.DisplayFor(model => model.Year)
         </dd>
-
+        <hr />
         <dt>
             @Html.DisplayNameFor(model => model.AssignedLecturerId)
         </dt>
@@ -50,10 +56,15 @@
         <dd>
             @Html.DisplayFor(model => model.AssignedLecturerId)
         </dd>
-
+        <hr />
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "EditCourse", new { id = Model.CourseId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+
+<div class="text-left">
+    <button class="btn btn-info">
+        @Html.ActionLink("EDIT", "EditCourse", new { id = Model.CourseId })
+    </button>
+</div>
+
+

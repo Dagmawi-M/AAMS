@@ -39,23 +39,18 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
 
-
-                    <button type="button" class="btn btn-info">
-                        <a href="@Url.Action("Logout","Home")">Logout</a>
-                    </button>
-
-
+                    <h5 class="text-muted">@Session["FirstName"].ToString()</h5>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
 
+
                             <li class="nav-item">
-                                <a>@Session["FirstName"].ToString()</a>
+                                <button type="button" class="btn btn-info ">
+                                    <a href="@Url.Action("Logout","Home")">Logout</a>
+                                </button>
+
                             </li>
-                            <!--
-                    <li class="nav-item">
-                        <a href="@Url.Action("Logout","Home")">Logout</a>
-                    </li>-->
                         </ul>
                     </div>
 
@@ -64,50 +59,7 @@
 
 
             @RenderBody()
-            <!--
-    <div class="row">
-        <div class="column">1</div>
-        <div class="column">2</div>
-        <div class="column">3</div>
-        <div class="column">4</div>
-    </div>
-
-
-    <div class="row">
-        <div class="column">1</div>
-        <div class="column">2</div>
-        <div class="column">3</div>
-        <div class="column">4</div>
-    </div>
-
-    <div class="wrapper">
-        <div class="one">One</div>
-        <div class="two">Two</div>
-        <div class="three">Three</div>
-        <div class="four">Four</div>
-        <div class="five">Five</div>
-        <div class="six">Six</div>
-    </div>
-
-    <div class="wrapper fadeInDown">
-        <div id="formContent">
-            <div>Title</div>
-            <div>Course</div>
-            <div>Semester</div>
-            <div>Section</div>
-        </div>
-    </div>
-
-    <div class="wrapper fadeInDown">
-        <div id="formContent">
-            <div>Title</div>
-            <div>Course</div>
-            <div>Semester</div>
-            <div>Section</div>
-        </div>
-    </div>-->
-
-
+        
         </div>
     </div>
     @Scripts.Render("~/bundles/jquery")

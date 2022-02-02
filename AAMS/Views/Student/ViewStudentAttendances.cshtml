@@ -4,12 +4,12 @@
     ViewBag.Title = "ViewStudentAttendances";
     Layout = "~/Views/Shared/StudentLayout.cshtml";
 }
-
-<h2>ViewStudentAttendances</h2>
-
-
-<table class="table">
-    <tr>
+<br />
+<h2 class="text-center text-muted">ATTENDANCE RESULTS</h2>
+<br />
+<hr />  
+<table class="table table-hover text-center  table-sm">
+    <tr class="thead-light">
         <th>
             @Html.DisplayNameFor(model => model.AttendanceSheets.Courses.CourseCode)
         </th>
@@ -21,7 +21,7 @@
 
     @foreach (var item in Model)
     {
-        <tr class=" table-hover text-center  table-sm">
+        <tr >
             <td>
                 @Html.DisplayFor(modelItem => item.AttendanceSheets.Courses.CourseCode)
             </td>
@@ -29,7 +29,13 @@
                 @Html.DisplayFor(modelItem => item.AttendanceSheets.Courses.CourseName)
             </td>
             <td>
-                @Html.ActionLink("Details", "DetailsStudentAttendance", new { id = item.AttendanceDataID })
+                <a href="@Url.Action("DetailsStudentAttendance", "Student",new { id = item.AttendanceDataID })" class="">
+                    <i class="far fa-eye"></i>
+                    <span>
+                        <strong>Details</strong>
+                    </span>
+                </a>
+              
             </td>
         </tr>
 
