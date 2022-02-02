@@ -8,7 +8,7 @@
 <h2>ViewStudents</h2>
 
 <p>
-    @Html.ActionLink("Take Attendance", "CreateAttendance")
+    @Html.ActionLink("Take Attendance", "CreateAttendance",new { id = Model.First().AttendanceSheetId })
 </p>
 <table class="table">
     <tr>

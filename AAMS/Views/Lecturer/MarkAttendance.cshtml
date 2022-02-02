@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<AAMS.Models.AttendanceData>
-    @using AAMS.Models
+
 
 @{
     ViewBag.Title = "MarkAttendance";
@@ -30,7 +30,15 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Data)
-           
+
+        </th>
+        <th>
+            Out of Five(5%)
+
+        </th>
+        <th>
+            Out of Ten(10%)
+
         </th>
         <th></th>
     </tr>
@@ -53,18 +61,28 @@
         @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.Batch)
     </td>
     <td>
-        @*@Html.DisplayFor(modelItem => item.Data)*@
+        @ViewBag.Percent[0]%
         @{
-            ApplicationDbContext _context = new ApplicationDbContext();
-            int count = _context.AttendanceDatas.Where(a => a.AttendanceDataID == item.AttendanceDataID && a.Data == "Present").ToList().Count();
-            @Html.Display(count.ToString());
+            ViewBag.Percent.RemoveAt(0);
+        }
+    </td>
+    <td>
+        @ViewBag.OutOfFive[0]%
+        @{
+            ViewBag.OutOfFive.RemoveAt(0);
+        }
+    </td>
+    <td>
+        @ViewBag.OutOfTen[0]%
+        @{
+            ViewBag.OutOfTen.RemoveAt(0);
         }
     </td>
     @*<td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.AttendanceDataID }) |
-        @Html.ActionLink("Details", "Details", new { id = item.AttendanceDataID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.AttendanceDataID })
-    </td>*@
+            @Html.ActionLink("Edit", "Edit", new { id = item.AttendanceDataID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.AttendanceDataID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.AttendanceDataID })
+        </td>*@
 </tr>
 }
 
