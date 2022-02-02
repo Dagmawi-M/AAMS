@@ -66,7 +66,7 @@ namespace AAMS.Controllers
         {
             int id = (int)TempData["AttendanceId"];
             string date = TempData["Date"].ToString();
-            var datas = _context.AttendanceDatas.Where(a => a.AttendanceSheetId == id && a.Date== date).ToList();
+            var datas = _context.AttendanceDatas.Where(a=>a.Date== date).ToList();
             return View(datas);
         }
 
@@ -148,6 +148,11 @@ namespace AAMS.Controllers
             ViewBag.Absent = _context.AttendanceDatas.Where(a => a.AttendanceSheets.StudentId == sheet.AttendanceSheets.StudentId && a.AttendanceSheets.CourseId == sheet.AttendanceSheets.CourseId && a.Data=="Absent").ToList().Count();
             ViewBag.Present = _context.AttendanceDatas.Where(a => a.AttendanceSheets.StudentId == sheet.AttendanceSheets.StudentId && a.AttendanceSheets.CourseId == sheet.AttendanceSheets.CourseId && a.Data == "Present").ToList().Count();
             ViewBag.Permission = _context.AttendanceDatas.Where(a => a.AttendanceSheets.StudentId == sheet.AttendanceSheets.StudentId && a.AttendanceSheets.CourseId == sheet.AttendanceSheets.CourseId && a.Data == "Permission").ToList().Count();
+            int present = (int)ViewBag.Present, absent = (int)ViewBag.Absent, permission = (int)ViewBag.Permission;
+            int active = present + permission;
+            System.Diagnostics.Debug.WriteLine(active);
+            double percentage = ((present + permission) / (present + absent + permission)) * 100;
+            ViewBag.Percentage = percentage.ToString();
             return View(student);
         }
     }
