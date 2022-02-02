@@ -5,13 +5,19 @@
     Layout = "~/Views/Shared/_LecturerLayout.cshtml";
 }
 
-<h2>ViewStudents</h2>
+<h2 class="text-center text-muted">ViewStudents</h2>
 
-<p>
-    @Html.ActionLink("Take Attendance", "CreateAttendance",new { id = Model.First().AttendanceSheetId })
-</p>
-<table class="table">
-    <tr>
+<div class="text-right">
+    <button class="btn btn-info">
+        @Html.ActionLink("TAKE ATTENDANCE", "CreateAttendance", "Lecturer")
+    </button>
+</div>
+
+<hr />
+
+
+<table class="table  table-hover text-center  table-sm">
+    <tr class="thead-light">
         <th>
             @Html.DisplayNameFor(model => model.Students.StudentCode)
         </th>

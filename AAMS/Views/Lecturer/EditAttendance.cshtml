@@ -68,8 +68,21 @@
                 @Html.DisplayFor(modelItem => item.Data)
             </td>
             <td>
-                @Html.ActionLink("Edit", "EditAttendanceData", new { id = item.AttendanceDataID }) |
-                @Html.ActionLink("Delete", "DeleteAttendance", new { id = item.AttendanceDataID })
+                <a href="@Url.Action("EditAttendanceData", "Lecturer",new { id = item.AttendanceDataID })" class="">
+                    <i class="far fa-edit"></i>
+                    <span>
+                        <strong>Edit</strong>
+                    </span>
+                </a>
+
+                |
+                <a href="@Url.Action("DeleteAttendance", "Lecturer",new { id = item.AttendanceDataID })" class="">
+                    <i class="far fa-trash-alt"></i>
+                    <span>
+                        <strong>Delete</strong>
+                    </span>
+                </a>
+
             </td>
         </tr>
     }

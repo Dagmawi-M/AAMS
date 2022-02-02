@@ -6,13 +6,18 @@
     Layout = "~/Views/Shared/_LecturerLayout.cshtml";
 }
 
-<h2>MarkAttendance</h2>
+<h2 class="text-center text-muted">MarkAttendance</h2>
+<div class="text-left">
+    <button class="btn btn-default">
+        @Html.ActionLink("<  ", "ViewAttendances", "Lecturer")
+    </button>
+</div>
 
 <p>
     @*@Html.ActionLink("Create New", "Create")*@
 </p>
-<table class="table">
-    <tr>
+<table class="table  table-hover text-center  table-sm">
+    <tr class="thead-light">
         <th>
             @Html.DisplayNameFor(model => model.AttendanceSheets.Students.StudentCode)
         </th>
@@ -43,47 +48,48 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.StudentCode)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.FirstName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.FatherName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.GrandFatherName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.Batch)
-    </td>
-    <td>
-        @ViewBag.Percent[0]%
-        @{
-            ViewBag.Percent.RemoveAt(0);
-        }
-    </td>
-    <td>
-        @ViewBag.OutOfFive[0]%
-        @{
-            ViewBag.OutOfFive.RemoveAt(0);
-        }
-    </td>
-    <td>
-        @ViewBag.OutOfTen[0]%
-        @{
-            ViewBag.OutOfTen.RemoveAt(0);
-        }
-    </td>
-    @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.AttendanceDataID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.AttendanceDataID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.AttendanceDataID })
-        </td>*@
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.StudentCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.FatherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.GrandFatherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.Batch)
+            </td>
+            <td>
+                @ViewBag.Percent[0]%
+                @{
+                    ViewBag.Percent.RemoveAt(0);
+                }
+            </td>
+            <td>
+                @ViewBag.OutOfFive[0]%
+                @{
+                    ViewBag.OutOfFive.RemoveAt(0);
+                }
+            </td>
+            <td>
+                @ViewBag.OutOfTen[0]%
+                @{
+                    ViewBag.OutOfTen.RemoveAt(0);
+                }
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.AttendanceDataID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.AttendanceDataID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.AttendanceDataID })
+                </td>*@
+        </tr>
+    }
 
 </table>
