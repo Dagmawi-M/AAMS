@@ -124,6 +124,7 @@ namespace AAMS.Controllers
         public ActionResult EditAttendanceData (int id)
         {
             var data = _context.AttendanceDatas.Where(d => d.AttendanceDataID == id).FirstOrDefault();
+            ViewBag.AttendanceDataID = id;
             ViewBag.StudentCode = data.AttendanceSheets.Students.StudentCode;
             ViewBag.FirstName = data.AttendanceSheets.Students.FirstName;
             ViewBag.FatherName = data.AttendanceSheets.Students.FatherName;
@@ -132,13 +133,18 @@ namespace AAMS.Controllers
             ViewBag.Date = data.Date;
             return View();
         }
+
         [HttpPost]
         public ActionResult EditAttendanceData(AttendanceData ad)
         {
-            var existing = _context.AttendanceDatas.Where(d => d.AttendanceDataID == ad.AttendanceDataID).FirstOrDefault();
+            int id = (int)TempData["AttendanceDataID"];
+            var existing = _context.AttendanceDatas.Where(d => d.AttendanceDataID == id).FirstOrDefault();
+            System.Diagnostics.Debug.WriteLine(ad.Data);
+            System.Diagnostics.Debug.WriteLine(ad.AttendanceDataID);
+            System.Diagnostics.Debug.WriteLine(ad.AttendanceSheetId);
             existing.Data = ad.Data;
             _context.SaveChanges();
-            return RedirectToAction("EditAttendanceData", new { id = ad.AttendanceDataID });
+            return RedirectToAction("EditAttendance", new { id = existing.AttendanceSheetId });
         }
 
         public ActionResult ViewStatus(int id)
@@ -148,10 +154,17 @@ namespace AAMS.Controllers
             ViewBag.Absent = _context.AttendanceDatas.Where(a => a.AttendanceSheets.StudentId == sheet.AttendanceSheets.StudentId && a.AttendanceSheets.CourseId == sheet.AttendanceSheets.CourseId && a.Data=="Absent").ToList().Count();
             ViewBag.Present = _context.AttendanceDatas.Where(a => a.AttendanceSheets.StudentId == sheet.AttendanceSheets.StudentId && a.AttendanceSheets.CourseId == sheet.AttendanceSheets.CourseId && a.Data == "Present").ToList().Count();
             ViewBag.Permission = _context.AttendanceDatas.Where(a => a.AttendanceSheets.StudentId == sheet.AttendanceSheets.StudentId && a.AttendanceSheets.CourseId == sheet.AttendanceSheets.CourseId && a.Data == "Permission").ToList().Count();
-            int present = (int)ViewBag.Present, absent = (int)ViewBag.Absent, permission = (int)ViewBag.Permission;
-            int active = present + permission;
-            System.Diagnostics.Debug.WriteLine(active);
-            double percentage = ((present + permission) / (present + absent + permission)) * 100;
+            double present = (double)ViewBag.Present, absent = (double)ViewBag.Absent, permission = (double)ViewBag.Permission;
+            double active = present + permission, total = present + permission + absent;
+            double percentage;
+            try
+            {
+                percentage = (active / total) * 100;
+            }
+            catch (DivideByZeroException)
+            {
+                percentage = 0;
+            }
             ViewBag.Percentage = percentage.ToString();
             return View(student);
         }

@@ -56,7 +56,7 @@
         @*@Html.DisplayFor(modelItem => item.Data)*@
         @{
             ApplicationDbContext _context = new ApplicationDbContext();
-            var count = _context.AttendanceDatas.Where(a => a.AttendanceDataID == item.AttendanceDataID && a.Data == "Present").ToList().Count();
+            int count = _context.AttendanceDatas.Where(a => a.AttendanceDataID == item.AttendanceDataID && a.Data == "Present").ToList().Count();
             @Html.Display(count.ToString());
         }
     </td>

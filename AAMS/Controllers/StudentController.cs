@@ -45,10 +45,17 @@ namespace AAMS.Controllers
             ViewBag.Present = _db.AttendanceDatas.Where(a => a.AttendanceSheets.StudentId == attendance.AttendanceSheets.StudentId && a.AttendanceSheets.CourseId == attendance.AttendanceSheets.CourseId && a.Data=="Present").ToList().Count();
             ViewBag.Absent = _db.AttendanceDatas.Where(a => a.AttendanceSheets.StudentId == attendance.AttendanceSheets.StudentId && a.AttendanceSheets.CourseId == attendance.AttendanceSheets.CourseId && a.Data == "Absent").ToList().Count();
             ViewBag.Permission = _db.AttendanceDatas.Where(a => a.AttendanceSheets.StudentId == attendance.AttendanceSheets.StudentId && a.AttendanceSheets.CourseId == attendance.AttendanceSheets.CourseId && a.Data == "Permission").ToList().Count();
-            int present = (int)ViewBag.Present, absent = (int)ViewBag.Absent, permission = (int)ViewBag.Permission;
-            int active = present + permission;
-            System.Diagnostics.Debug.WriteLine(active);
-            double percentage = ((present+permission) / (present+absent+permission)) * 100;
+            double present = (double)ViewBag.Present, absent = (double)ViewBag.Absent, permission = (double)ViewBag.Permission;
+            double active = present + permission, total = present + permission + absent;
+            double percentage;
+            try
+            {
+                percentage = (active / total) * 100;
+            }
+            catch (DivideByZeroException)
+            {
+                percentage = 0;
+            }
             ViewBag.Percentage = percentage.ToString();
             return View(datas);
         }
