@@ -24,13 +24,18 @@
     ABSENT = @ViewBag.Absent |
     PRESENT = @ViewBag.Present |
     PERMISSION = @ViewBag.Permission <br />
-    @if (ViewBag.Percentage <= 75)
+    PERCENTAGE =
+    @if (ViewBag.Percentage < 75)
     {
-        <p class="text-danger">  Percentage = @ViewBag.Percentage %</p>
+        <span class="text-danger">   @ViewBag.Percentage %</span>
+    }
+    else if (ViewBag.Percentage <= 85)
+    {
+        <span class="text-warning">   @ViewBag.Percentage %</span>
     }
     else
     {
-        <p class="">  Percentage = @ViewBag.Percentage %</p>
+        <span class="text-success">   @ViewBag.Percentage %</span>
     }
 
     <br />
