@@ -214,7 +214,7 @@ namespace AAMS.Controllers
             {
                 percentage = 0;
             }
-            ViewBag.Percentage = percentage.ToString();
+            ViewBag.Percentage = percentage;
             return View(student);
         }
     }

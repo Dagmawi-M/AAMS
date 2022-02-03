@@ -11,7 +11,19 @@
     Absent = @ViewBag.Absent <br />
     Present = @ViewBag.Present <br />
     Permission = @ViewBag.Permission <br /><br />
-    Percentage = @ViewBag.Percentage %
+    Percentage =
+    @if (ViewBag.Percentage < 75)
+    {
+        <span class="text-danger">   @ViewBag.Percentage %</span>
+    }
+    else if (ViewBag.Percentage <= 85)
+    {
+        <span class="text-warning">   @ViewBag.Percentage %</span>
+    }
+    else
+    {
+        <span class="text-success">   @ViewBag.Percentage %</span>
+    }
 </p>
 <table class="table">
     <tr>
