@@ -6,8 +6,9 @@ the lecturers with taking and marking attendance datas and the students in viewi
 
 
 
+![Authentication_Page](https://user-images.githubusercontent.com/43979542/152387090-5fca5975-c598-47e8-ae70-9f8ff32aa2ac.PNG)
 
-https://github.com/Dagmawi-M/AAMS/issues/1#issuecomment-1029179542
+
 
 
 
