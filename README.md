@@ -4,6 +4,26 @@ AAMS provides an fully automated attendance management system that assists the r
 the lecturers with taking and marking attendance datas and the students in viewing their current attendance data.
 
 
+
+
+
+https://github.com/Dagmawi-M/AAMS/issues/1#issuecomment-1029179542
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Functional Requirements ()
 
 Users must be authenticated and authorized accordingly.
