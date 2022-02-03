@@ -24,7 +24,16 @@
     ABSENT = @ViewBag.Absent |
     PRESENT = @ViewBag.Present |
     PERMISSION = @ViewBag.Permission <br />
-    Percentage = @ViewBag.Percentage % <br />
+    @if (ViewBag.Percentage <= 75)
+    {
+        <p class="text-danger">  Percentage = @ViewBag.Percentage %</p>
+    }
+    else
+    {
+        <p class="">  Percentage = @ViewBag.Percentage %</p>
+    }
+
+    <br />
 </h7>
 <hr />
 <table class="table  table-hover text-center  table-sm">

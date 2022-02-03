@@ -71,7 +71,16 @@
                 @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.Batch)
             </td>
             <td>
-                @ViewBag.Percent[0]%
+                @if (ViewBag.Percent[0] <= 75)
+                {
+                    <p class="text-danger"> @ViewBag.Percent[0]%</p>
+                }
+                else
+                {
+                    <p class=""> @ViewBag.Percent[0]%</p>
+                }
+
+
                 @{
                     ViewBag.Percent.RemoveAt(0);
                 }
