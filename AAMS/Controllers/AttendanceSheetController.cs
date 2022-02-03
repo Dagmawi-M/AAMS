@@ -70,15 +70,18 @@ namespace AAMS.Controllers
         public ActionResult DeleteStudentAttendance(int id)
         {
             var sheet = _context.AttendanceSheets.Where(a => a.AttendanceSheetId == id).FirstOrDefault();
+            var courseId = sheet.CourseId;
+            var section = sheet.Section;
             _context.AttendanceSheets.Remove(sheet);
             _context.SaveChanges();
-            return RedirectToAction("ListAttendanceSheet", new { id = sheet.AttendanceSheetId });
+            var data = _context.AttendanceSheets.Where(d => d.CourseId == courseId && d.Section == section).FirstOrDefault();
+            return RedirectToAction("ListAttendanceSheet", new { id = data.AttendanceSheetId });
         }
 
         public ActionResult DeleteAttendanceSheet(int id)
         {
             var sheet = _context.AttendanceSheets.Where(a => a.AttendanceSheetId == id).FirstOrDefault();
-            var sheets = _context.AttendanceSheets.Where(a => a.CourseId == sheet.CourseId).ToList();
+            var sheets = _context.AttendanceSheets.Where(a => a.CourseId == sheet.CourseId && a.Section==sheet.Section).ToList();
             foreach(var item in sheets)
             {
                 _context.AttendanceSheets.Remove(item);
