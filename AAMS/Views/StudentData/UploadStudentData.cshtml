@@ -16,8 +16,13 @@
 <body>
     @using (Html.BeginForm("UploadStudentData", "StudentData", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-        <input type="file" name="postedFile" />
-        <input type="submit" value="Import" />
+        <div class="form-group">
+            <input type="file" name="postedFile" /> <br />
+        </div>
+        <div class="form-group">
+            <input class="btn btn-info" type="submit" value="Import" />
+        </div>
+       
     }
 </body>
 </html>

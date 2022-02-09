@@ -15,6 +15,15 @@
         @Html.ActionLink("UPLOAD STUDENT DATA", "UploadStudentData", "StudentData")
     </button>
 </div>
+@using (Html.BeginForm())
+{
+    
+<div class="form-group">
+    @Html.Label("Filter Students: ")
+    @Html.DropDownList("filter", new SelectList(ViewBag.Batches, "Batch", "Batch"))
+    <input type="submit" value="Filter" class="btn btn-info" />
+</div>
+}
 
 <hr />
 
@@ -40,50 +49,50 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.StudentCode)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.FirstName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.FatherName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.GrandFatherName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Batch)
-    </td>
-    <td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FatherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GrandFatherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Batch)
+            </td>
+            <td>
 
-     
 
-        <a href="@Url.Action("EditStudent", "StudentData",new { id = item.StudentId })" class="">
-            <i class="far fa-edit"></i>
-            <span>
-                <strong>Edit</strong>
-            </span>
-        </a>
 
-        |
-        <a href="@Url.Action("DetailsStudent", "StudentData",new { id = item.StudentId })" class="">
-            <i class="far fa-eye"></i>
-            <span>
-                <strong>Details</strong>
-            </span>
-        </a>
+                <a href="@Url.Action("EditStudent", "StudentData",new { id = item.StudentId })" class="">
+                    <i class="far fa-edit"></i>
+                    <span>
+                        <strong>Edit</strong>
+                    </span>
+                </a>
 
-        |
-        <a href="@Url.Action("DeleteStudent", "StudentData",new { id = item.StudentId })" class="">
-            <i class="far fa-trash-alt"></i>
-            <span>
-                <strong>Delete</strong>
-            </span>
-        </a>
-    </td>
-</tr>
+                |
+                <a href="@Url.Action("DetailsStudent", "StudentData",new { id = item.StudentId })" class="">
+                    <i class="far fa-eye"></i>
+                    <span>
+                        <strong>Details</strong>
+                    </span>
+                </a>
+
+                |
+                <a href="@Url.Action("DeleteStudent", "StudentData",new { id = item.StudentId })" class="">
+                    <i class="far fa-trash-alt"></i>
+                    <span>
+                        <strong>Delete</strong>
+                    </span>
+                </a>
+            </td>
+        </tr>
     }
 
 </table>

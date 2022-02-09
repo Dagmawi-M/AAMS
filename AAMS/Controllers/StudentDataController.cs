@@ -20,9 +20,21 @@ namespace AAMS.Controllers
             return RedirectToAction("ViewStudents");
         }
 
+        public ActionResult ViewStudents(string batch = "")
+        {
+            var batches = _context.StudentDatas.GroupBy(a => a.Batch).Select(a => a.FirstOrDefault()).ToList();
+            ViewBag.Batches = batches;
+            if(batch=="")
+                return View(_context.StudentDatas.OrderBy(a => a.FirstName).ToList());
+            else
+                return View(_context.StudentDatas.Where(a=>a.Batch==batch).OrderBy(a => a.FirstName).ToList());
+
+        }
+        [HttpPost]
         public ActionResult ViewStudents()
         {
-            return View(_context.StudentDatas.OrderBy(a => a.FirstName).ToList());
+            string filter = Request.Form["filter"].ToString();
+            return RedirectToAction("ViewStudents", new { batch = filter });
         }
 
         public ActionResult DetailsStudent(int id)
