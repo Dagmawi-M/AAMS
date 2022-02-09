@@ -248,6 +248,7 @@
     <Content Include="Views\Lecturer\ViewStatus.cshtml" />
     <Content Include="Views\Student\ViewStudentAttendances.cshtml" />
     <Content Include="Views\Student\DetailsStudentAttendance.cshtml" />
+    <Content Include="Views\StudentData\UploadStudentData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppData\" />

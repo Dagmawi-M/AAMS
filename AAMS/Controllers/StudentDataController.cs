@@ -1,6 +1,9 @@
 ﻿ using AAMS.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -66,8 +69,82 @@ namespace AAMS.Controllers
             return RedirectToAction("ViewStudents");
         }
 
-   
+        public ActionResult UploadStudentData()
+        {
+            return View();
+        }
 
-   
+        [HttpPost]
+        public ActionResult UploadStudentData(HttpPostedFileBase postedFile)
+        {
+            string filePath = string.Empty;
+            if (postedFile != null)
+            {
+                string path = Server.MapPath("~/Uploads/");
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                filePath = path + Path.GetFileName(postedFile.FileName);
+                string extension = Path.GetExtension(postedFile.FileName);
+                postedFile.SaveAs(filePath);
+
+                //Create a DataTable.
+                DataTable dt = new DataTable();
+                dt.Columns.AddRange(new DataColumn[5] { 
+                                new DataColumn("StudentCode", typeof(string)),
+                                new DataColumn("FirstName", typeof(string)),
+                                new DataColumn("FatherName", typeof(string)),
+                                new DataColumn("GrandFatherName", typeof(string)),
+                                new DataColumn("Batch",typeof(string)) });
+
+
+                //Read the contents of CSV file.
+                string csvData = System.IO.File.ReadAllText(filePath);
+
+                //Execute a loop over the rows.
+                foreach (string row in csvData.Split('\n'))
+                {
+                    if (!string.IsNullOrEmpty(row))
+                    {
+                        dt.Rows.Add();
+                        int i = 0;
+
+                        //Execute a loop over the columns.
+                        foreach (string cell in row.Split(','))
+                        {
+                            dt.Rows[dt.Rows.Count - 1][i] = cell;
+                            i++;
+                        }
+                    }
+                }
+
+                string conString = ConfigurationManager.ConnectionStrings["ApplicationDbContext"].ConnectionString;
+                using (SqlConnection con = new SqlConnection(conString))
+                {
+                    using (SqlBulkCopy sqlBulkCopy = new SqlBulkCopy(con))
+                    {
+                        //Set the database table name.
+                        sqlBulkCopy.DestinationTableName = "dbo.StudentDatas";
+
+                        //[OPTIONAL]: Map the DataTable columns with that of the database table
+                        //sqlBulkCopy.ColumnMappings.Add("StudentId", "StudentId");
+                        sqlBulkCopy.ColumnMappings.Add("StudentCode", "StudentCode");
+                        sqlBulkCopy.ColumnMappings.Add("FirstName", "FirstName");
+                        sqlBulkCopy.ColumnMappings.Add("FatherName", "FatherName");
+                        sqlBulkCopy.ColumnMappings.Add("GrandFatherName", "GrandFatherName");
+                        sqlBulkCopy.ColumnMappings.Add("Batch", "Batch");
+
+                        con.Open();
+                        sqlBulkCopy.WriteToServer(dt);
+                        con.Close();
+                    }
+                }
+            }
+            return RedirectToAction("ViewStudents");
+        }
+
+
     }
 }

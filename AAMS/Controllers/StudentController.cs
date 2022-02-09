@@ -61,5 +61,7 @@ namespace AAMS.Controllers
             ViewBag.Percentage = percentage;
             return View(datas);
         }
+
+      
     }
 }
