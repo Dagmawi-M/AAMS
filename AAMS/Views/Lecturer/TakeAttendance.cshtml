@@ -5,6 +5,7 @@
 @{
     ViewBag.Title = "TakeAttendance";
     Layout = "~/Views/Shared/_LecturerLayout.cshtml";
+    Page.MaintainScrollPositionOnPostBack = true;
 }
 
 <h2 class="text-center text-muted">TAKE ATTENDANCE</h2>
@@ -13,6 +14,8 @@
 <label class="text-center text-muted">Course Name : @Model.First().AttendanceSheets.Courses.CourseName</label>
 <br />
 <label class="text-center text-muted">Section : @Model.First().AttendanceSheets.Section</label>
+<br />
+<label class="text-center text-muted">Date : @Model.First().Date</label>
 <br />
 
 <div class="text-right">
@@ -44,9 +47,9 @@
         <th>
             @Html.DisplayNameFor(model => model.AttendanceSheets.Students.Batch)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Date)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Data)
         </th>
@@ -71,9 +74,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.AttendanceSheets.Students.Batch)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Date)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Data)
             </td>

@@ -11,7 +11,8 @@ namespace AAMS.Controllers
     {
         // GET: Lecturer
         ApplicationDbContext _context = new ApplicationDbContext();
-       // int attendanceId = 0;
+        // int attendanceId = 0;
+        
 
         public ActionResult Index()
         {
@@ -80,6 +81,7 @@ namespace AAMS.Controllers
             TempData["AttendanceId"] = attendance.AttendanceSheetId;
             TempData["Date"] = attendance.Date;
             return RedirectToAction("TakeAttendance", new { date = attendance.Date });
+            
         }
         public ActionResult Absent(int id)
         {
@@ -108,7 +110,7 @@ namespace AAMS.Controllers
                 datas = _context.AttendanceDatas.Where(a => a.AttendanceSheets.CourseId == attendance.CourseId && a.AttendanceSheets.Section == attendance.Section).OrderBy(a => a.AttendanceSheets.Students.FirstName).ToList();
             else
                datas = _context.AttendanceDatas.Where(a => a.AttendanceSheets.CourseId == attendance.CourseId && a.AttendanceSheets.Section == attendance.Section && a.Date==date).OrderBy(a => a.AttendanceSheets.Students.FirstName).ToList();
-            var dates = _context.AttendanceDatas.GroupBy(a => a.Date).Select(a => a.FirstOrDefault()).ToList();
+            var dates = _context.AttendanceDatas.Where(a=>a.AttendanceSheets.CourseId==attendance.CourseId && a.AttendanceSheets.Section==attendance.Section).GroupBy(a => a.Date).Select(a => a.FirstOrDefault()).ToList();
             TempData["AttendanceId"] = datas.First().AttendanceSheetId;
             ViewBag.Dates = dates;
             return View(datas);
@@ -121,11 +123,6 @@ namespace AAMS.Controllers
             return RedirectToAction("EditAttendance", new { id = id, date = filter });
         }
 
-        public ActionResult FilterAttendance(int id)
-        {
-            string filter = Request.Form["filter"].ToString();
-            return RedirectToAction("EditAttendance", new { id = id, date = filter });
-        }
         public ActionResult DeleteAttendance(int id)
         {
             var attendance = _context.AttendanceDatas.Where(a => a.AttendanceDataID == id).FirstOrDefault();

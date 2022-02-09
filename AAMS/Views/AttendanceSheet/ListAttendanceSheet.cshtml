@@ -8,8 +8,8 @@
 <h2 class="text-center text-muted">LIST ATTENDANCE</h2>
 
 <p>
-    @Html.ActionLink("Back", "ViewAttendanceSheets") |
-    @Html.ActionLink("Add Student", "AddStudentToAttendanceSheet", new { code = ViewBag.courseCode })
+    @Html.ActionLink("BACK", "ViewAttendanceSheets",null, new { @class="btn btn-info" })  
+    @Html.ActionLink("ADD STUDENT", "AddStudentToAttendanceSheet", new { code = ViewBag.courseCode }, new { @class = "btn btn-info" })
     @*@Html.Label("Course Code: " + ViewBag.courseCode)
         @Html.Label("Course Name: " + ViewBag.courseName)
         @Html.Label("Section: " + ViewBag.section)*@
